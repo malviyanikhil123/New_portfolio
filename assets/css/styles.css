@@ -60,9 +60,11 @@ header {
 header:hover {
      background: rgba(30, 41, 59, 0.95);
 }
-header img{
-    margin: -12px;
+
+header img {
+     margin: -12px;
 }
+
 /* Enhanced navigation */
 nav {
      display: flex;
@@ -132,7 +134,7 @@ nav a:hover {
      font-weight: 800;
      line-height: 1.1;
      margin-bottom: 24px;
-     background: linear-gradient(135deg, var(--neutral-text-dark) 0%, var(--accent-dark) 100%);
+     background: linear-gradient(135deg, #5295b7 0%, #1f4358 100%);
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
      background-clip: text;
@@ -349,34 +351,108 @@ nav a:hover {
 }
 
 /* Sequential animation delays for first 25 icons */
-.skill-icon:nth-child(1) { animation-delay: 0s; }
-.skill-icon:nth-child(2) { animation-delay: 0.2s; }
-.skill-icon:nth-child(3) { animation-delay: 0.4s; }
-.skill-icon:nth-child(4) { animation-delay: 0.6s; }
-.skill-icon:nth-child(5) { animation-delay: 0.8s; }
-.skill-icon:nth-child(6) { animation-delay: 1s; }
-.skill-icon:nth-child(7) { animation-delay: 1.2s; }
-.skill-icon:nth-child(8) { animation-delay: 1.4s; }
-.skill-icon:nth-child(9) { animation-delay: 1.6s; }
-.skill-icon:nth-child(10) { animation-delay: 1.8s; }
-.skill-icon:nth-child(11) { animation-delay: 2s; }
-.skill-icon:nth-child(12) { animation-delay: 2.2s; }
-.skill-icon:nth-child(13) { animation-delay: 2.4s; }
-.skill-icon:nth-child(14) { animation-delay: 2.6s; }
-.skill-icon:nth-child(15) { animation-delay: 2.8s; }
-.skill-icon:nth-child(16) { animation-delay: 3s; }
-.skill-icon:nth-child(17) { animation-delay: 3.2s; }
-.skill-icon:nth-child(18) { animation-delay: 3.4s; }
-.skill-icon:nth-child(19) { animation-delay: 3.6s; }
-.skill-icon:nth-child(20) { animation-delay: 3.8s; }
-.skill-icon:nth-child(21) { animation-delay: 4s; }
-.skill-icon:nth-child(22) { animation-delay: 4.2s; }
-.skill-icon:nth-child(23) { animation-delay: 4.4s; }
-.skill-icon:nth-child(24) { animation-delay: 4.6s; }
-.skill-icon:nth-child(25) { animation-delay: 4.8s; }
+.skill-icon:nth-child(1) {
+     animation-delay: 0s;
+}
+
+.skill-icon:nth-child(2) {
+     animation-delay: 0.2s;
+}
+
+.skill-icon:nth-child(3) {
+     animation-delay: 0.4s;
+}
+
+.skill-icon:nth-child(4) {
+     animation-delay: 0.6s;
+}
+
+.skill-icon:nth-child(5) {
+     animation-delay: 0.8s;
+}
+
+.skill-icon:nth-child(6) {
+     animation-delay: 1s;
+}
+
+.skill-icon:nth-child(7) {
+     animation-delay: 1.2s;
+}
+
+.skill-icon:nth-child(8) {
+     animation-delay: 1.4s;
+}
+
+.skill-icon:nth-child(9) {
+     animation-delay: 1.6s;
+}
+
+.skill-icon:nth-child(10) {
+     animation-delay: 1.8s;
+}
+
+.skill-icon:nth-child(11) {
+     animation-delay: 2s;
+}
+
+.skill-icon:nth-child(12) {
+     animation-delay: 2.2s;
+}
+
+.skill-icon:nth-child(13) {
+     animation-delay: 2.4s;
+}
+
+.skill-icon:nth-child(14) {
+     animation-delay: 2.6s;
+}
+
+.skill-icon:nth-child(15) {
+     animation-delay: 2.8s;
+}
+
+.skill-icon:nth-child(16) {
+     animation-delay: 3s;
+}
+
+.skill-icon:nth-child(17) {
+     animation-delay: 3.2s;
+}
+
+.skill-icon:nth-child(18) {
+     animation-delay: 3.4s;
+}
+
+.skill-icon:nth-child(19) {
+     animation-delay: 3.6s;
+}
+
+.skill-icon:nth-child(20) {
+     animation-delay: 3.8s;
+}
+
+.skill-icon:nth-child(21) {
+     animation-delay: 4s;
+}
+
+.skill-icon:nth-child(22) {
+     animation-delay: 4.2s;
+}
+
+.skill-icon:nth-child(23) {
+     animation-delay: 4.4s;
+}
+
+.skill-icon:nth-child(24) {
+     animation-delay: 4.6s;
+}
+
+.skill-icon:nth-child(25) {
+     animation-delay: 4.8s;
+}
 
 /* Duplicate set with delayed start */
-.skill-icon:nth-child(n+26) { 
+.skill-icon:nth-child(n+26) {
      animation-delay: calc(5s + (var(--skill-index, 0) * 0.2s));
 }
 
@@ -385,9 +461,11 @@ nav a:hover {
           opacity: 0;
           transform: scale(0) translateY(20px) rotateZ(-15deg);
      }
+
      60% {
           transform: scale(1.1) translateY(-5px) rotateZ(5deg);
      }
+
      100% {
           opacity: 1;
           transform: scale(1) translateY(0) rotateZ(0deg);
@@ -398,6 +476,7 @@ nav a:hover {
      0% {
           transform: translateX(0);
      }
+
      100% {
           transform: translateX(-50%);
      }
@@ -457,13 +536,13 @@ nav a:hover {
      .skills {
           padding: 80px 0;
      }
-     
+
      .skills-carousel {
           gap: 20px;
           padding: 50px 0;
           min-height: 160px;
      }
-     
+
      .skills-column {
           gap: 20px;
           min-width: 200vw;
@@ -471,37 +550,37 @@ nav a:hover {
           padding-right: 30px;
           animation-duration: 30s;
      }
-     }
-     
-     .skill-icon {
-          width: 70px;
-          height: 70px;
-          margin: 8px 0;
-     }
-     
-     .skill-icon {
-          width: 100px;
-          height: 100px;
-     }
-     
-     .skill-icon img {
-          width: 50px;
-          height: 50px;
-          object-fit: contain;
-     }
+}
+
+.skill-icon {
+     width: 70px;
+     height: 70px;
+     margin: 8px 0;
+}
+
+.skill-icon {
+     width: 100px;
+     height: 100px;
+}
+
+.skill-icon img {
+     width: 50px;
+     height: 50px;
+     object-fit: contain;
+}
 
 
 @media (max-width: 480px) {
      .skills {
           padding: 60px 0;
      }
-     
+
      .skills-carousel {
           gap: 15px;
           padding: 40px 0;
           min-height: 140px;
      }
-     
+
      .skills-column {
           gap: 15px;
           min-width: 200vw;
@@ -509,29 +588,29 @@ nav a:hover {
           padding-right: 20px;
           animation-duration: 25s;
      }
-     
+
      .skill-icon {
           width: 85px;
           height: 85px;
      }
-     
+
      .skill-icon img {
           width: 42px;
           height: 42px;
      }
 }
-     
-     .skill-icon {
-          width: 85px;
-          height: 85px;
-          margin: 8px 0;
-     }
-     
-     .skill-icon img {
-          width: 42px;
-          height: 42px;
-          object-fit: contain;
-     }
+
+.skill-icon {
+     width: 85px;
+     height: 85px;
+     margin: 8px 0;
+}
+
+.skill-icon img {
+     width: 42px;
+     height: 42px;
+     object-fit: contain;
+}
 
 
 /* Enhanced Experience section */
@@ -2665,4 +2744,30 @@ footer {
      .exp-card-modern {
           padding: 24px 12px;
      }
+}
+
+/*Notification*/
+#notification {
+     position: fixed;
+     top: -60px;
+     /* hidden above screen */
+     left: 50%;
+     transform: translateX(-50%);
+     background: linear-gradient(135deg, #33333d 0%, #298BA8 100%);
+     color: #000000;
+     padding: 12px 20px;
+     border-radius: 21px;
+     font-size: 14px;
+     opacity: 0;
+     transition: all 0.5s ease;
+     /* smooth effect */
+     z-index: 1000;
+}
+
+/* When visible */
+#notification.show {
+     top: -15px;
+     /* slide down */
+     opacity: 1;
+     /* fade in */
 }

@@ -81,8 +81,22 @@ document.addEventListener('DOMContentLoaded', function () {
 function downloadResume() {
      const link = document.createElement('a');
     link.href = 'Nikhil_Malviya_FullStack_Developer_Resume.pdf';  // file path
-    link.download = 'Nikhil_Malviya_FullStack_Developer_Resume.pdf'; // downloaded file name
+    link.download = 'Nikhil_Malviya_Resume'; // downloaded file name
     link.click();
+    // Show smooth notification
+  showNotification("Resume downloaded successfully!");
+}
+
+// Show Notification
+function showNotification(message) {
+  const notif = document.getElementById("notification");
+  notif.innerText = message;
+  notif.classList.add("show");
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    notif.classList.remove("show");
+  }, 3000);
 }
 
 // --- Project Data ---
