@@ -79,7 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
      generateSkillIcons();
 });
 function downloadResume() {
-     window.open('resume.pdf', '_blank');
+     const link = document.createElement('a');
+    link.href = 'Nikhil_Malviya_FullStack_Developer_Resume.pdf';  // file path
+    link.download = 'Nikhil_Malviya_FullStack_Developer_Resume.pdf'; // downloaded file name
+    link.click();
 }
 
 // --- Project Data ---
