@@ -1,46 +1,111 @@
 /* =============================================================================
-   CSS VARIABLES & ROOT STYLES
+   NIKHIL MALVIYA - PORTFOLIO WEBSITE STYLES
+   =============================================================================
+   
+   Author: Nikhil Malviya
+   Description: Complete CSS styling for personal portfolio website
+   Color Palette: Elegant neutral tones (#F2F2F2, #EAE4D5, #B6B09F, #000000)
+   Features: Dark/Light theme support, responsive design, smooth animations
+   
+   Table of Contents:
+   1. CSS Variables & Root Styles
+   2. Progress Bar Component
+   3. Header & Navigation
+   4. Button Components
+   5. Hero Section
+   6. About Section
+   7. Experience Section
+   8. Projects Section
+   9. Skills Section
+   10. Contact Section
+   11. Footer
+   12. Theme Toggle
+   13. Light Mode Overrides
+   14. Utility Classes
+   
+   ============================================================================= */
+
+/* =============================================================================
+   1. CSS VARIABLES & ROOT STYLES
    ============================================================================= */
 :root {
-     /* Color Palette */
-     --primary-dark: #0F172A;
-     --primary-light: #1D4ED8;
-     --accent-dark: #38BDF8;
-     --accent-light: #0EA5E9;
-     --neutral-text-dark: #E2E8F0;
-     --neutral-text-light: #1E293B;
-     --muted-text-dark: #94A3B8;
-     --muted-text-light: #64748B;
-     --background-dark: #18181B;
-     --background-light: #F8FAFC;
-     --surface-dark: #1E293B;
-     --surface-light: #F1F5F9;
-     --border-dark: #334155;
-     --border-light: #CBD5E1;
+     /* Color Palette - Elegant neutral color scheme */
+     --primary-dark: #000000;        /* Pure black for high contrast */
+     --primary-light: #B6B09F;       /* Warm taupe for accents */
+     --accent-dark: #B6B09F;         /* Consistent taupe accent */
+     --accent-light: #EAE4D5;        /* Soft cream for highlights */
+     --neutral-text-dark: #F2F2F2;   /* Light gray for readability */
+     --neutral-text-light: #000000;  /* Black text for light mode */
+     --muted-text-dark: #B6B09F;     /* Muted text in dark mode */
+     --muted-text-light: #6B6658;    /* Muted text in light mode */
+     --background-dark: #0A0A0A;     /* Deep dark background */
+     --background-light: #F2F2F2;    /* Light gray background */
+     --surface-dark: #1A1A1A;        /* Dark surface for cards */
+     --surface-light: #EAE4D5;       /* Light surface for cards */
+     --border-dark: #B6B09F;         /* Border color */
+     --border-light: #B6B09F;        /* Consistent border in light mode */
 
-     /* Layout Variables */
+     /* Layout Variables for consistent spacing */
      --section-padding: 80px 0;
      --container-max-width: 1200px;
      --border-radius-lg: 16px;
      --border-radius-xl: 24px;
-     
-     /* Shadows */
+
+     /* Shadow definitions for depth */
      --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.08);
      --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.12);
      --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.16);
-     
-     /* Transitions */
+
+     /* Smooth transition definitions */
      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
      --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* =============================================================================
-   BASE STYLES
+   2. PROGRESS BAR COMPONENT
    ============================================================================= */
+/* Fixed scroll progress indicator at top of page */
+.progress-container {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 4px;
+     background: rgba(182, 176, 159, 0.1);
+     z-index: 9999;
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+}
+
+/* Animated progress bar that fills based on scroll position */
+.progress-bar {
+     height: 100%;
+     background: linear-gradient(90deg, var(--accent-dark), var(--accent-light));
+     width: 0%;
+     transition: width 0.1s ease-out;
+     border-radius: 0 2px 2px 0;
+     box-shadow: 0 0 10px rgba(182, 176, 159, 0.3);
+}
+
+/* Light mode adjustments for progress bar */
+.light-mode .progress-container {
+     background: rgba(182, 176, 159, 0.15);
+}
+
+.light-mode .progress-bar {
+     background: linear-gradient(90deg, #6B6658, #B6B09F);
+     box-shadow: 0 0 10px rgba(107, 102, 88, 0.3);
+}
+
+/* =============================================================================
+   3. BASE STYLES & GLOBAL SETTINGS
+   ============================================================================= */
+/* Smooth scrolling behavior for anchor links */
 html {
      scroll-behavior: smooth;
 }
 
+/* Main body styling with theme support */
 body {
      background: var(--background-dark);
      color: var(--neutral-text-dark);
@@ -49,38 +114,45 @@ body {
      font-size: 16px;
      overflow-x: hidden;
      margin: 0;
-     padding-top: 50px;
+     padding-top: 50px; /* Account for fixed header */
 }
 
 /* =============================================================================
-   HEADER & NAVIGATION
+   4. HEADER & NAVIGATION SYSTEM
    ============================================================================= */
+/* Fixed header with glassmorphism effect and smooth animations */
 header {
-     background: rgba(30, 41, 59, 0.85);
      border-bottom: 1.5px solid var(--border-dark);
      backdrop-filter: blur(20px);
      -webkit-backdrop-filter: blur(20px);
      position: fixed;
-     top: 8px;
-     left: 8px;
-     right: 8px;
+     top: 38px;
+     left: 28px;
+     right: 28px;
      z-index: 1000;
      padding: 4px 20px;
-     border-radius: 12px;
+     border-radius: 52px;
      transition: var(--transition-smooth);
      display: flex;
      align-items: center;
      justify-content: space-between;
+     background: rgba(10, 10, 10, 0.85);
+     border: 1px solid rgba(182, 176, 159, 0.2);
+     box-shadow: var(--shadow-medium);
 }
 
+/* Header hover effect for enhanced visual feedback */
 header:hover {
-     background: rgba(30, 41, 59, 0.95);
+     backdrop-filter: blur(25px);
+     -webkit-backdrop-filter: blur(25px);
+     border-color: rgba(182, 176, 159, 0.3);
 }
 
+/* Logo container with interactive scaling */
 .logo {
      font-size: 1.5em;
      font-weight: bold;
-     color: #6366f1;
+     color: var(--accent-dark);
      display: flex;
      align-items: center;
      cursor: pointer;
@@ -91,6 +163,7 @@ header:hover {
      transform: scale(1.05);
 }
 
+/* Logo image responsive and optimized */
 .logo img {
      height: 50px;
      width: auto;
@@ -99,12 +172,14 @@ header:hover {
      padding: 0;
 }
 
+/* Navigation menu container */
 nav {
      display: flex;
      gap: 8px;
      align-items: center;
 }
 
+/* Navigation links with smooth interactions */
 nav a {
      color: var(--neutral-text-dark);
      text-decoration: none;
@@ -117,13 +192,13 @@ nav a {
 }
 
 nav a:hover {
-     color: var(--accent-dark);
-     background: rgba(56, 189, 248, 0.1);
+     color: var(--accent-light);
+     background: rgba(182, 176, 159, 0.15);
 }
 
 .nav-link.active {
-     color: var(--accent-dark);
-     background: rgba(56, 189, 248, 0.15);
+     color: var(--accent-light);
+     background: rgba(182, 176, 159, 0.2);
      font-weight: 700;
 }
 
@@ -134,7 +209,7 @@ nav a:hover {
      left: 0;
      right: 0;
      height: 4px;
-     background: var(--accent-dark);
+     background: var(--accent-light);
      border-radius: 2px 2px 0 0;
 }
 
@@ -206,6 +281,91 @@ nav a:hover {
      font-size: 17px;
      padding: 8px 20px;
      border-radius: 6px;
+}
+
+/* =============================================================================
+   DOWNLOAD RESUME BUTTON (BOTAO) - From Uiverse.io by Tsiangana
+   ============================================================================= */
+.botao {
+     width: 125px;
+     height: 45px;
+     border-radius: 20px;
+     border: none;
+     box-shadow: 1px 1px rgba(182, 176, 159, 0.37);
+     padding: 5px 10px;
+     background-color: var(--accent-dark);
+     color: var(--neutral-text-dark);
+     font-family: Roboto, sans-serif;
+     font-weight: 505;
+     font-size: 16px;
+     line-height: 1;
+     cursor: pointer;
+     filter: drop-shadow(0 0 10px rgba(182, 176, 159, 0.568));
+     transition: 0.5s linear;
+     position: relative;
+}
+
+.botao .mysvg {
+     display: none;
+}
+
+.botao:hover {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     transition: 0.5s linear;
+}
+
+.botao:hover .texto {
+     display: none;
+}
+
+.botao:hover .mysvg {
+     display: inline;
+}
+
+.botao:hover::after {
+     content: "";
+     position: absolute;
+     width: 16px;
+     height: 3px;
+     background-color: rgb(59, 190, 230);
+     margin-left: -20px;
+     animation: animate 0.9s linear infinite;
+}
+
+.botao:hover::before {
+     content: "";
+     position: absolute;
+     top: -3px;
+     left: -3px;
+     width: 100%;
+     height: 100%;
+     border: 3.5px solid transparent;
+     border-top: 3.5px solid #fff;
+     border-right: 3.5px solid #fff;
+     border-radius: 50%;
+     animation: animateC 2s linear infinite;
+}
+
+@keyframes animateC {
+     0% {
+          transform: rotate(0deg);
+     }
+
+     100% {
+          transform: rotate(360deg);
+     }
+}
+
+@keyframes animate {
+     0% {
+          transform: translateY(0);
+     }
+
+     100% {
+          transform: translateY(20px);
+     }
 }
 
 /* Cards */
@@ -346,10 +506,10 @@ nav a:hover {
 .hero-left h1 {
      font-size: clamp(2.5rem, 5vw, 2.8em);
      font-weight: 700;
-     color: #fff;
+     color: var(--neutral-text-dark);
      margin-bottom: 18px;
      line-height: 1.15;
-     background: linear-gradient(135deg, #5295b7 0%, #1f4358 100%);
+     background: linear-gradient(135deg, var(--neutral-text-dark) 0%, var(--accent-dark) 100%);
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
      background-clip: text;
@@ -363,7 +523,7 @@ nav a:hover {
 .hero-left p,
 .hero-desc {
      font-size: 1.18em;
-     color: #d1d5db;
+     color: var(--muted-text-dark);
      margin-bottom: 32px;
      max-width: 500px;
 }
@@ -381,6 +541,7 @@ nav a:hover {
 .hero-graphic {
      margin-bottom: 12px;
 }
+
 /* =============================================================================
    ABOUT SECTION
    ============================================================================= */
@@ -462,7 +623,7 @@ nav a:hover {
 }
 
 .about-highlight {
-     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(29, 78, 216, 0.05));
+     background: linear-gradient(135deg, rgba(182, 176, 159, 0.1), rgba(234, 228, 213, 0.05));
      padding: 18px;
      border-radius: 12px;
      border-left: 4px solid var(--accent-dark);
@@ -472,7 +633,7 @@ nav a:hover {
 }
 
 .about-highlight:hover {
-     background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(29, 78, 216, 0.08));
+     background: linear-gradient(135deg, rgba(182, 176, 159, 0.15), rgba(234, 228, 213, 0.08));
      transform: translateX(5px);
      border-left-width: 6px;
 }
@@ -750,7 +911,7 @@ nav a:hover {
 }
 
 .company-name {
-     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(29, 78, 216, 0.05));
+     background: linear-gradient(135deg, rgba(182, 176, 159, 0.1), rgba(234, 228, 213, 0.05));
      padding: 8px 12px;
      border-radius: 8px;
      display: inline-block;
@@ -871,19 +1032,46 @@ nav a:hover {
      margin-bottom: 12px;
 }
 
+/* Project Card Tags Styling */
+.project-card .tags {
+     margin-top: 18px;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 8px;
+}
+
+.project-card .tags span {
+     background: var(--background-dark);
+     color: var(--accent-dark);
+     padding: 6px 12px;
+     border-radius: 16px;
+     font-size: 12px;
+     font-weight: 500;
+     border: 1px solid var(--border-dark);
+     transition: var(--transition-smooth);
+     display: inline-block;
+     white-space: nowrap;
+}
+
+.project-card .tags span:hover {
+     background: var(--accent-dark);
+     color: #fff;
+     transform: scale(1.05);
+}
+
 .pagination-controls {
      text-align: center;
      margin-top: 32px;
 }
 
 .pagination-btn {
-     background: linear-gradient(90deg, #6366f1 60%, #23232a 100%);
-     color: #fff;
+     background: linear-gradient(90deg, var(--accent-dark) 60%, var(--primary-dark) 100%);
+     color: var(--neutral-text-dark);
      border-radius: 16px;
      padding: 6px 18px;
      font-size: 1em;
      font-weight: 500;
-     box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+     box-shadow: 0 2px 8px rgba(182, 176, 159, 0.15);
      letter-spacing: 0.02em;
      border: none;
      margin: 0 8px;
@@ -892,7 +1080,7 @@ nav a:hover {
 }
 
 .pagination-btn:hover:not(:disabled) {
-     background: linear-gradient(90deg, #6366f1 80%, #6366f1 100%);
+     background: linear-gradient(90deg, var(--accent-dark) 80%, var(--accent-dark) 100%);
 }
 
 .pagination-btn:disabled {
@@ -951,21 +1139,18 @@ nav a:hover {
 
 .scroller[data-animated="true"] {
      overflow: hidden;
-     -webkit-mask: linear-gradient(
-          90deg,
-          transparent,
-          white 20%,
-          white 80%,
-          transparent
-     );
+     -webkit-mask: linear-gradient(90deg,
+               transparent,
+               white 20%,
+               white 80%,
+               transparent);
      mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
 
 .scroller[data-animated="true"] .scroller__inner {
      width: max-content;
      flex-wrap: nowrap;
-     animation: scroll var(--_animation-duration, 40s)
-          var(--_animation-direction, forwards) linear infinite;
+     animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
 }
 
 .scroller[data-animated="true"] .scroller__inner:hover {
@@ -1001,7 +1186,7 @@ nav a:hover {
 }
 
 .tag-list li {
-     padding: 1.5rem;
+     padding: 0;
      background: var(--surface-dark);
      border: 2px solid var(--border-dark);
      border-radius: 50%;
@@ -1052,6 +1237,8 @@ nav a:hover {
      filter: brightness(0.9) saturate(1.1);
      transition: all 0.3s ease;
      flex-shrink: 0;
+     display: block;
+     margin: auto;
 }
 
 .tag-list li:hover img {
@@ -1059,8 +1246,38 @@ nav a:hover {
      transform: scale(1.1);
 }
 
+/* Dark mode - specific fix for AWS and other light-background images */
+body:not(.light-mode) .tag-list li img[src*="AWS"],
+body:not(.light-mode) .tag-list li img[alt*="AWS"],
+body:not(.light-mode) .tag-list li img[title*="AWS"] {
+     filter: brightness(0) invert(1) brightness(0.9);
+     border-radius: 6px;
+     padding: 2px;
+}
+
+/* Dark mode general enhancement for all tech icons */
+body:not(.light-mode) .tag-list li img {
+     filter: brightness(1.2) contrast(1.1);
+     border-radius: 4px;
+     padding: 1px;
+}
+
+/* Dark mode hover for tech/skills icons */
+body:not(.light-mode) .tag-list li:hover img {
+     filter: brightness(1.4) contrast(1.4) saturate(1.5);
+     transform: scale(1.1);
+}
+
+/* Dark mode hover for AWS specifically */
+body:not(.light-mode) .tag-list li:hover img[src*="AWS"],
+body:not(.light-mode) .tag-list li:hover img[alt*="AWS"],
+body:not(.light-mode) .tag-list li:hover img[title*="AWS"] {
+     filter: brightness(0) invert(1) brightness(1.2);
+     transform: scale(1.1);
+}
+
 /* Pause animation when hovering over any skill item */
-.scroller[data-animated="true"] .tag-list li:hover ~ * {
+.scroller[data-animated="true"] .tag-list li:hover~* {
      animation-play-state: paused;
 }
 
@@ -1096,7 +1313,7 @@ nav a:hover {
      pointer-events: none;
 }
 
-.contact > * {
+.contact>* {
      position: relative;
      z-index: 1;
 }
@@ -1258,10 +1475,10 @@ nav a:hover {
      background: transparent;
 }
 
-.form-group input:focus + label,
-.form-group textarea:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group textarea:not(:placeholder-shown) + label {
+.form-group input:focus+label,
+.form-group textarea:focus+label,
+.form-group input:not(:placeholder-shown)+label,
+.form-group textarea:not(:placeholder-shown)+label {
      top: -14px;
      left: 24px;
      font-size: 0.9rem;
@@ -1281,8 +1498,8 @@ nav a:hover {
      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-group input:focus ~ .input-icon,
-.form-group textarea:focus ~ .input-icon {
+.form-group input:focus~.input-icon,
+.form-group textarea:focus~.input-icon {
      transform: scale(1.15);
      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
 }
@@ -1292,8 +1509,8 @@ nav a:hover {
      transition: stroke 0.4s ease;
 }
 
-.form-group input:focus ~ .input-icon svg,
-.form-group textarea:focus ~ .input-icon svg {
+.form-group input:focus~.input-icon svg,
+.form-group textarea:focus~.input-icon svg {
      stroke: var(--accent-dark);
 }
 
@@ -1336,8 +1553,8 @@ nav a:hover {
 }
 
 .social-links a {
-     width: 64px;
-     height: 64px;
+     width: 68px;
+     height: 68px;
      background: rgba(30, 41, 59, 0.8);
      border: 2px solid rgba(56, 189, 248, 0.25);
      border-radius: 20px;
@@ -1348,6 +1565,7 @@ nav a:hover {
      backdrop-filter: blur(15px);
      position: relative;
      overflow: hidden;
+     padding: 0;
 }
 
 .social-links a::before {
@@ -1373,27 +1591,58 @@ nav a:hover {
 }
 
 .social-links img {
-     width: 28px;
-     height: 28px;
-     filter: brightness(0) invert(1);
+     width: 32px;
+     height: 32px;
      transition: all 0.4s ease;
+     object-fit: contain;
+     display: block;
+     margin: auto;
 }
 
-.social-links a:hover img {
+/* Dark mode - invert PNG icons to white */
+body:not(.light-mode) .social-links img {
+     filter: brightness(0) invert(1);
+}
+
+body:not(.light-mode) .social-links a:hover img {
      transform: scale(1.2) rotate(-5deg);
      filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
+
+/* Additional centering for all social icons */
+.social-links a,
+.footer-social a {
+     display: flex !important;
+     align-items: center !important;
+     justify-content: center !important;
+}
+
+.social-links img,
+.footer-social img {
+     flex-shrink: 0;
+}
+
+/* Specific centering for skills icons */
+.tag-list li {
+     display: flex !important;
+     align-items: center !important;
+     justify-content: center !important;
+}
+
+.tag-list li img {
+     flex-shrink: 0;
 }
 
 /* =============================================================================
    FOOTER SECTION
    ============================================================================= */
 footer {
-     background: linear-gradient(135deg, var(--surface-dark) 0%, rgba(15, 23, 42, 0.98) 100%);
+     background: linear-gradient(135deg, var(--surface-dark) 0%, var(--primary-dark) 100%);
      position: relative;
      overflow: hidden;
      margin-top: 80px;
      padding: 32px 48px;
-     color: #b3b3b3;
+     color: var(--muted-text-dark);
      font-size: 0.95em;
 }
 
@@ -1415,8 +1664,8 @@ footer::after {
      left: 0;
      right: 0;
      bottom: 0;
-     background: radial-gradient(circle at 25% 25%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-          radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+     background: radial-gradient(circle at 25% 25%, rgba(182, 176, 159, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(234, 228, 213, 0.05) 0%, transparent 50%);
      pointer-events: none;
 }
 
@@ -1440,11 +1689,11 @@ footer::after {
      max-width: 800px;
      margin: 0 auto;
      padding: 40px;
-     background: rgba(30, 41, 59, 0.6);
+     background: rgba(26, 26, 26, 0.7);
      border-radius: 24px;
-     border: 1px solid rgba(56, 189, 248, 0.2);
+     border: 1px solid rgba(182, 176, 159, 0.3);
      backdrop-filter: blur(15px);
-     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(56, 189, 248, 0.1);
+     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(182, 176, 159, 0.15);
      position: relative;
 }
 
@@ -1497,7 +1746,7 @@ footer::after {
 .footer-resources a,
 .footer-legal a {
      display: block;
-     color: #b3b3b3;
+     color: var(--muted-text-dark);
      text-decoration: none;
      margin-bottom: 6px;
 }
@@ -1517,10 +1766,10 @@ footer::after {
 }
 
 .footer-social a {
-     width: 56px;
-     height: 56px;
-     background: rgba(15, 23, 42, 0.8);
-     border: 2px solid rgba(56, 189, 248, 0.2);
+     width: 60px;
+     height: 60px;
+     background: rgba(26, 26, 26, 0.8);
+     border: 2px solid rgba(182, 176, 159, 0.3);
      border-radius: 16px;
      display: flex;
      align-items: center;
@@ -1530,6 +1779,7 @@ footer::after {
      position: relative;
      overflow: hidden;
      margin-right: 8px;
+     padding: 0;
 }
 
 .footer-social a::before {
@@ -1539,7 +1789,7 @@ footer::after {
      left: -100%;
      width: 100%;
      height: 100%;
-     background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+     background: linear-gradient(90deg, transparent, rgba(182, 176, 159, 0.3), transparent);
      transition: left 0.6s ease;
 }
 
@@ -1551,14 +1801,17 @@ footer::after {
      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent-light) 100%);
      border-color: var(--accent-dark);
      transform: translateY(-6px) scale(1.1);
-     box-shadow: 0 20px 40px -8px rgba(56, 189, 248, 0.4), 0 0 0 4px rgba(56, 189, 248, 0.2);
+     box-shadow: 0 20px 40px -8px rgba(182, 176, 159, 0.4), 0 0 0 4px rgba(182, 176, 159, 0.2);
 }
 
 .footer-social img {
-     width: 24px;
-     height: 24px;
+     width: 28px;
+     height: 28px;
      filter: brightness(0) invert(1);
      transition: all 0.3s ease;
+     object-fit: contain;
+     display: block;
+     margin: auto;
 }
 
 .footer-social a:hover img {
@@ -1780,15 +2033,15 @@ footer::after {
 }
 
 /* Theme toggle actions */
-.theme-switch__checkbox:checked + .theme-switch__container {
+.theme-switch__checkbox:checked+.theme-switch__container {
      background-color: var(--container-night-bg);
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+.theme-switch__checkbox:checked+.theme-switch__container .theme-switch__circle-container {
      left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
+.theme-switch__checkbox:checked+.theme-switch__container .theme-switch__circle-container:hover {
      left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
 }
 
@@ -1796,49 +2049,114 @@ footer::after {
      left: calc(var(--circle-container-offset) + 0.187em);
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+.theme-switch__checkbox:checked+.theme-switch__container .theme-switch__moon {
      -webkit-transform: translate(0);
      -ms-transform: translate(0);
      transform: translate(0);
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
+.theme-switch__checkbox:checked+.theme-switch__container .theme-switch__clouds {
      bottom: -4.062em;
 }
 
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
+.theme-switch__checkbox:checked+.theme-switch__container .theme-switch__stars-container {
      top: 50%;
      -webkit-transform: translateY(-50%);
      -ms-transform: translateY(-50%);
      transform: translateY(-50%);
 }
+
 /* =============================================================================
    LIGHT MODE THEME
    ============================================================================= */
 .light-mode {
-     background: #fff !important;
-     color: #23232a !important;
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
 }
 
+/* Header Styles */
 .light-mode header {
-     background: rgba(255, 255, 255, 0.82) !important;
-     border-bottom: 1.5px solid #e5e7eb !important;
+     background: rgba(242, 242, 242, 0.95) !important;
+     border-bottom: 1.5px solid var(--border-light) !important;
 }
 
 .light-mode nav a {
-     color: #23232a !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode nav a:hover {
+     color: var(--primary-light) !important;
+     background: rgba(182, 176, 159, 0.15) !important;
 }
 
 .light-mode .nav-link.active {
-     color: #6366f1 !important;
+     color: var(--primary-light) !important;
+     background: rgba(182, 176, 159, 0.2) !important;
 }
 
 .light-mode .nav-link.active::before {
-     background: #6366f1 !important;
+     background: var(--primary-light) !important;
 }
 
+/* Hero Section */
 .light-mode .hero {
-     background: #fff !important;
+     background: var(--background-light) !important;
+}
+
+.light-mode .hero h1,
+.light-mode .hero-left h1 {
+     color: var(--neutral-text-light) !important;
+     background: linear-gradient(135deg, #000000 0%, #B6B09F 50%, #6B6658 100%) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     background-clip: text !important;
+     font-weight: 700 !important;
+}
+
+.light-mode .hero-desc,
+.light-mode .hero p {
+     color: var(--muted-text-light) !important;
+     font-weight: 500 !important;
+     opacity: 0.9 !important;
+}
+
+/* About Section */
+.light-mode .about-me {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .about-text p {
+     color: var(--neutral-text-light) !important;
+     font-weight: 500 !important;
+}
+
+.light-mode .about-intro,
+.light-mode .about-highlight,
+.light-mode .about-project,
+.light-mode .about-growth {
+     color: var(--neutral-text-light) !important;
+     font-weight: 500 !important;
+}
+
+.light-mode .tech-highlight {
+     color: #4A453E !important;
+     background: linear-gradient(135deg, #4A453E, #6B6658) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     background-clip: text !important;
+     font-weight: 700 !important;
+}
+
+/* Experience Section */
+.light-mode .experience {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .experience-intro,
+.light-mode .experience-subtitle {
+     color: var(--neutral-text-light) !important;
 }
 
 .light-mode .exp-card-modern,
@@ -1846,63 +2164,442 @@ footer::after {
 .light-mode .card,
 .light-mode .project-card,
 .light-mode .contact-form {
-     background: #f3f4f6 !important;
-     color: #23232a !important;
-     border: 1.5px solid #e5e7eb !important;
+     background: var(--surface-light) !important;
+     color: var(--neutral-text-light) !important;
+     border: 1.5px solid var(--border-light) !important;
 }
 
-.light-mode .resume-btn,
-.light-mode .hero-btn,
-.light-mode .contact-btn,
-.light-mode .pagination-btn {
-     background: #6366f1 !important;
-     color: #fff !important;
-     border: none !important;
+.light-mode .exp-card-modern h3 {
+     color: #4A453E !important;
+     font-weight: 700 !important;
 }
 
-.light-mode .footer-main,
-.light-mode footer {
-     background: #f3f4f6 !important;
-     color: #23232a !important;
+.light-mode .company-name {
+     color: var(--neutral-text-light) !important;
+     font-weight: 600 !important;
 }
 
-.light-mode .footer-nav h4,
-.light-mode .footer-resources h4,
-.light-mode .footer-legal h4 {
-     color: #6366f1 !important;
+.light-mode .duration {
+     color: var(--muted-text-light) !important;
+     font-weight: 500 !important;
 }
 
-.light-mode .footer-social img,
-.light-mode .social-links img {
-     filter: none !important;
+.light-mode .experience-points li {
+     color: var(--neutral-text-light) !important;
+     font-weight: 500 !important;
 }
 
-.light-mode .experience,
-.light-mode .projects,
-.light-mode .skills,
-.light-mode .contact {
-     background: #f3f4f6 !important;
-     color: #23232a !important;
+.light-mode .experience-points li strong,
+.light-mode .experience-points li em {
+     color: #2C2926 !important;
+     font-weight: 600 !important;
+}
+
+.light-mode .experience-points li::before {
+     color: #4A453E !important;
+}
+
+.light-mode .exp-card-modern .tags span {
+     background: var(--background-light) !important;
+     color: #4A453E !important;
+     border: 1px solid var(--border-light) !important;
+     font-weight: 600 !important;
+}
+
+/* Projects Section */
+.light-mode .projects {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .project-card h3 {
+     color: #4A453E !important;
+     font-weight: 700 !important;
+}
+
+.light-mode .project-card p {
+     color: var(--neutral-text-light) !important;
+     font-weight: 500 !important;
+}
+
+.light-mode .project-tags button {
+     background: var(--surface-light) !important;
+     color: var(--neutral-text-light) !important;
+     border: 1px solid var(--border-light) !important;
+     font-weight: 600 !important;
+}
+
+.light-mode .project-tags button:hover,
+.light-mode .project-tags button.active {
+     background: #4A453E !important;
+     color: white !important;
+     border-color: #4A453E !important;
+}
+
+.light-mode .project-card .tags span {
+     background: var(--background-light) !important;
+     color: #4A453E !important;
+     border: 1px solid var(--border-light) !important;
+     padding: 6px 12px !important;
+     border-radius: 16px !important;
+     font-size: 12px !important;
+     font-weight: 600 !important;
+     display: inline-block !important;
+     white-space: nowrap !important;
+     transition: var(--transition-smooth) !important;
+}
+
+.light-mode .project-card .tags span:hover {
+     background: var(--primary-light) !important;
+     color: white !important;
+     transform: scale(1.05) !important;
+}
+
+/* Skills Section */
+.light-mode .skills {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .skills-intro {
+     color: var(--neutral-text-light) !important;
 }
 
 .light-mode .tag-list li {
      background: var(--surface-light) !important;
      border-color: var(--border-light) !important;
-     color: #23232a !important;
+     color: var(--neutral-text-light) !important;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+     display: flex !important;
+     align-items: center !important;
+     justify-content: center !important;
+     padding: 0 !important;
 }
 
 .light-mode .tag-list li:hover {
-     background: var(--background-light) !important;
-     border-color: var(--accent-light) !important;
-     color: #23232a !important;
+     background: white !important;
+     border-color: var(--primary-light) !important;
+     color: var(--neutral-text-light) !important;
+     box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2) !important;
 }
 
 .light-mode .tag-list li img {
-     filter: brightness(0.7) saturate(1.1) !important;
+     filter: brightness(0.9) saturate(1.2) !important;
+     display: block !important;
+     margin: auto !important;
+     object-fit: contain !important;
 }
 
 .light-mode .tag-list li:hover img {
-     filter: brightness(0.9) saturate(1.4) !important;
+     filter: brightness(1) saturate(1.4) !important;
+}
+
+/* Contact Section */
+.light-mode .contact {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .contact-intro,
+.light-mode .contact-subtitle {
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .contact-form {
+     background: white !important;
+     border: 2px solid var(--border-light) !important;
+     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .form-group input,
+.light-mode .form-group textarea {
+     background: var(--surface-light) !important;
+     color: var(--neutral-text-light) !important;
+     border-color: var(--border-light) !important;
+}
+
+.light-mode .form-group input:focus,
+.light-mode .form-group textarea:focus {
+     border-color: var(--primary-light) !important;
+     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+}
+
+.light-mode .form-group label {
+     color: var(--muted-text-light) !important;
+}
+
+.light-mode .form-group input:focus+label,
+.light-mode .form-group textarea:focus+label,
+.light-mode .form-group input:not(:placeholder-shown)+label,
+.light-mode .form-group textarea:not(:placeholder-shown)+label {
+     color: var(--primary-light) !important;
+}
+
+.light-mode .input-icon svg {
+     stroke: var(--muted-text-light) !important;
+}
+
+.light-mode .form-group input:focus~.input-icon svg,
+.light-mode .form-group textarea:focus~.input-icon svg {
+     stroke: var(--primary-light) !important;
+}
+
+/* Hero Section SVG Light Mode Fixes */
+.light-mode .hero-graphic svg ellipse[fill*="surface-dark"],
+.light-mode .hero-graphic svg circle[fill*="surface-dark"] {
+     fill: var(--surface-light) !important;
+     stroke: var(--border-light) !important;
+}
+
+.light-mode .hero-graphic svg ellipse,
+.light-mode .hero-graphic svg circle {
+     fill: var(--surface-light) !important;
+     stroke: var(--border-light) !important;
+}
+
+.light-mode .hero-graphic svg text {
+     fill: var(--neutral-text-light) !important;
+}
+
+/* Fix all dark elements in hero SVG for light mode */
+.light-mode .hero-graphic svg circle[fill*="accent-dark"],
+.light-mode .hero-graphic svg ellipse[fill*="accent-dark"],
+.light-mode .hero-graphic svg rect[fill*="accent-dark"] {
+     fill: var(--accent-light) !important;
+}
+
+.light-mode .hero-graphic svg circle[stroke*="border-dark"],
+.light-mode .hero-graphic svg ellipse[stroke*="border-dark"],
+.light-mode .hero-graphic svg rect[stroke*="border-dark"] {
+     stroke: var(--border-light) !important;
+}
+
+.light-mode .hero-graphic svg text[fill="#fff"],
+.light-mode .hero-graphic svg *[fill="#fff"] {
+     fill: var(--neutral-text-light) !important;
+}
+
+/* Buttons */
+.light-mode .resume-btn,
+.light-mode .hero-btn,
+.light-mode .contact-btn,
+.light-mode .pagination-btn {
+     background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) !important;
+     color: white !important;
+     border: none !important;
+}
+
+.light-mode .pagination-btn:disabled {
+     background: var(--border-light) !important;
+     color: var(--muted-text-light) !important;
+}
+
+/* Footer */
+.light-mode footer {
+     background: linear-gradient(135deg, var(--surface-light) 0%, rgba(248, 250, 252, 0.98) 100%) !important;
+     color: var(--neutral-text-light) !important;
+     border-top: 2px solid var(--border-light) !important;
+}
+
+.light-mode footer::before {
+     background: linear-gradient(90deg, transparent, var(--primary-light), var(--accent-light), transparent) !important;
+}
+
+.light-mode footer::after {
+     background: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.03) 0%, transparent 50%) !important;
+}
+
+.light-mode .footer-main {
+     background: transparent !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .footer-content {
+     background: white !important;
+     border: 2px solid var(--border-light) !important;
+     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.1) !important;
+     backdrop-filter: none !important;
+}
+
+.light-mode .footer-content::before {
+     background: linear-gradient(90deg, transparent, var(--primary-light), transparent) !important;
+}
+
+.light-mode .footer-tagline {
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .footer-tagline strong {
+     background: linear-gradient(135deg, #4A453E, #6B6658) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     background-clip: text !important;
+}
+
+.light-mode .footer-description {
+     color: var(--muted-text-light) !important;
+     font-weight: 500 !important;
+}
+
+.light-mode .footer-nav h4,
+.light-mode .footer-resources h4,
+.light-mode .footer-legal h4 {
+     color: #4A453E !important;
+     font-weight: 700 !important;
+}
+
+.light-mode .footer-nav a,
+.light-mode .footer-resources a,
+.light-mode .footer-legal a {
+     color: var(--muted-text-light) !important;
+     font-weight: 500 !important;
+}
+
+.light-mode .footer-nav a:hover,
+.light-mode .footer-resources a:hover,
+.light-mode .footer-legal a:hover {
+     color: var(--primary-light) !important;
+}
+
+.light-mode .footer-social a {
+     background: white !important;
+     border: 2px solid var(--border-light) !important;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .footer-social a:hover {
+     background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) !important;
+     border-color: var(--primary-light) !important;
+     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2), 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+.light-mode .footer-social img {
+     filter: none !important;
+     opacity: 0.8 !important;
+     object-fit: contain !important;
+     display: block !important;
+     margin: auto !important;
+}
+
+.light-mode .footer-social a:hover img {
+     filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)) !important;
+}
+
+.light-mode .social-links img {
+     filter: none !important;
+     opacity: 0.8 !important;
+     object-fit: contain !important;
+}
+
+.light-mode .social-links a:hover img {
+     filter: brightness(0) invert(1) !important;
+     opacity: 1 !important;
+     transform: scale(1.2) rotate(-5deg) !important;
+}
+
+.light-mode .social-links a {
+     background: white !important;
+     border: 2px solid var(--border-light) !important;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .social-links a:hover {
+     background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) !important;
+     border-color: var(--primary-light) !important;
+     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2), 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+.light-mode .footer-bottom {
+     background: var(--surface-light) !important;
+     border-top: 1px solid var(--border-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .footer-bottom::before {
+     background: linear-gradient(90deg, transparent, var(--primary-light), transparent) !important;
+}
+
+.light-mode .copyright {
+     color: var(--muted-text-light) !important;
+}
+
+.light-mode .copyright strong {
+     color: #2C2926 !important;
+     background: none !important;
+     -webkit-background-clip: initial !important;
+     -webkit-text-fill-color: initial !important;
+     background-clip: initial !important;
+     font-weight: 600 !important;
+}
+
+/* Section Headers */
+.light-mode .experience h2,
+.light-mode .projects h2,
+.light-mode .skills h2,
+.light-mode .contact h2,
+.light-mode .about-me h2 {
+     background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     background-clip: text !important;
+}
+
+/* Statistics */
+.light-mode .stat-item {
+     background: white !important;
+     border-color: var(--border-light) !important;
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .stat-number {
+     color: #4A453E !important;
+     font-weight: 700 !important;
+}
+
+.light-mode .stat-label {
+     color: var(--muted-text-light) !important;
+     font-weight: 600 !important;
+}
+
+/* Theme Switch */
+.light-mode .theme-switch__container {
+     background: var(--border-light) !important;
+}
+
+/* Notification */
+.light-mode #notification {
+     background: linear-gradient(135deg, var(--surface-light) 0%, white 100%) !important;
+     color: var(--neutral-text-light) !important;
+     border: 1px solid var(--border-light) !important;
+}
+
+/* Additional Light Mode Overrides */
+.light-mode .hero-headline-main,
+.light-mode .hero-headline-sub {
+     background: linear-gradient(135deg, #000000 0%, #6B6658 50%, #B6B09F 100%) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     background-clip: text !important;
+     font-weight: 700 !important;
+}
+
+.light-mode .about-container {
+     background: var(--surface-light) !important;
+     border-color: var(--border-light) !important;
+}
+
+.light-mode .about-content {
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode .about-visual {
+     color: var(--neutral-text-light) !important;
+}
+
+.light-mode body {
+     background: var(--background-light) !important;
+     color: var(--neutral-text-light) !important;
 }
 
 /* =============================================================================
@@ -1913,8 +2610,8 @@ footer::after {
      top: -60px;
      left: 50%;
      transform: translateX(-50%);
-     background: linear-gradient(135deg, #33333d 0%, #298BA8 100%);
-     color: #000000;
+     background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent-light) 100%);
+     color: var(--neutral-text-dark);
      padding: 12px 20px;
      border-radius: 21px;
      font-size: 14px;
@@ -2025,7 +2722,7 @@ footer::after {
 
 .card h3,
 .project-card h3 {
-     color: #6366f1;
+     color: var(--accent-dark);
      margin-bottom: 8px;
 }
 
@@ -2178,7 +2875,7 @@ footer::after {
 }
 
 .skills-grid h3 {
-     color: #6366f1;
+     color: var(--accent-dark);
      margin-bottom: 10px;
 }
 
@@ -2207,7 +2904,7 @@ footer::after {
      display: flex;
      align-items: center;
      justify-content: center;
-     background: #23232a;
+     background: var(--primary-dark);
      border-radius: 50%;
      width: 100px;
      height: 100px;
@@ -2219,7 +2916,7 @@ footer::after {
 .skills-icons li:hover {
      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.18);
      transform: scale(1.12) rotate(-6deg);
-     background: linear-gradient(135deg, #6366f1 60%, #23232a 100%);
+     background: linear-gradient(135deg, var(--accent-dark) 60%, var(--primary-dark) 100%);
 }
 
 .skills-icons img {
@@ -2230,7 +2927,22 @@ footer::after {
      transition: transform 0.2s;
 }
 
+/* Dark mode - enhance skills icons for visibility */
+body:not(.light-mode) .skills-icons img {
+     filter: brightness(1.2) contrast(1.2) saturate(1.2);
+     background: rgba(255, 255, 255, 0.08);
+     border-radius: 6px;
+     padding: 2px;
+}
+
 .skills-icons li:hover img {
+     transform: scale(1.18) rotate(8deg);
+}
+
+/* Dark mode hover for skills icons */
+body:not(.light-mode) .skills-icons li:hover img {
+     filter: brightness(1.3) contrast(1.3) saturate(1.4);
+     background: rgba(255, 255, 255, 0.12);
      transform: scale(1.18) rotate(8deg);
 }
 
@@ -2239,7 +2951,7 @@ footer::after {
 }
 
 .skills-grid h3 {
-     color: #6366f1;
+     color: var(--accent-dark);
      margin-bottom: 18px;
      font-size: 1.18em;
      font-weight: 600;
@@ -2307,7 +3019,7 @@ footer::after {
 
 .form-group input:focus,
 .form-group textarea:focus {
-     border-color: #6366f1;
+     border-color: var(--accent-dark);
 }
 
 .form-group input:focus+label,
@@ -2317,8 +3029,8 @@ footer::after {
      top: -12px;
      left: 44px;
      font-size: 0.98em;
-     color: #6366f1;
-     background: #23232a;
+     color: var(--accent-dark);
+     background: var(--primary-dark);
      padding: 0 6px;
      border-radius: 8px;
      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.04);
@@ -2334,7 +3046,7 @@ footer::after {
 }
 
 .contact-btn {
-     background: linear-gradient(90deg, #6366f1 60%, #23232a 100%);
+     background: linear-gradient(90deg, var(--accent-dark) 60%, var(--primary-dark) 100%);
      color: #fff;
      border: none;
      padding: 16px 0;
@@ -2352,7 +3064,7 @@ footer::after {
      justify-content: center;
      gap: 8px;
      text-align: center;
-     text-shadow: 0 2px 8px #23232a44;
+     text-shadow: 0 2px 8px var(--primary-dark)44;
 }
 
 .contact-btn:hover {
@@ -2387,9 +3099,9 @@ footer::after {
 }
 
 footer {
-     background: #23232a;
+     background: var(--primary-dark);
      padding: 32px 48px;
-     color: #b3b3b3;
+     color: var(--muted-text-dark);
      font-size: 0.95em;
 }
 
@@ -2411,7 +3123,7 @@ footer {
 .footer-resources a,
 .footer-legal a {
      display: block;
-     color: #b3b3b3;
+     color: var(--muted-text-dark);
      text-decoration: none;
      margin-bottom: 6px;
 }
@@ -2419,7 +3131,7 @@ footer {
 .footer-nav h4,
 .footer-resources h4,
 .footer-legal h4 {
-     color: #6366f1;
+     color: var(--accent-dark);
      margin-bottom: 8px;
 }
 
@@ -2444,7 +3156,7 @@ footer {
 
 /* Pagination Button Styling - Use tags style */
 .pagination-btn {
-     background: linear-gradient(90deg, #6366f1 60%, #23232a 100%);
+     background: linear-gradient(90deg, var(--accent-dark) 60%, var(--primary-dark) 100%);
      color: #fff;
      border-radius: 16px;
      padding: 6px 18px;
@@ -2459,7 +3171,7 @@ footer {
 }
 
 .pagination-btn:hover:not(:disabled) {
-     background: linear-gradient(90deg, #6366f1 80%, #6366f1 100%);
+     background: linear-gradient(90deg, var(--accent-dark) 80%, var(--accent-dark) 100%);
 }
 
 .pagination-btn:disabled {

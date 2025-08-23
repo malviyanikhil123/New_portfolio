@@ -1,51 +1,142 @@
-// --- Skills Data ---
+/**
+ * ===============================================================================
+ * NIKHIL MALVIYA - PORTFOLIO WEBSITE JAVASCRIPT
+ * ===============================================================================
+ * 
+ * Author: Nikhil Malviya
+ * Description: Interactive functionality for personal portfolio website
+ * Features: Skills animation, project pagination, theme toggle, experience calculator
+ * 
+ * Table of Contents:
+ * 1. Skills Data & Management
+ * 2. Experience Calculator
+ * 3. Skills Animation System
+ * 4. Navigation & Scroll Handlers
+ * 5. Project Management System
+ * 6. Resume Download & Notifications
+ * 7. User Interface Interactions
+ * 8. Theme Toggle System
+ * 
+ * ===============================================================================
+ */
+
+/*
+ * ========================================
+ * 1. SKILLS DATA & MANAGEMENT
+ * ========================================
+ * Comprehensive collection of technical skills organized by category
+ * Each skill includes icon path and descriptive title for display
+ */
+
+/**
+ * Master skills database containing all technologies and tools
+ * Organized by categories: Frontend, Backend, Databases, Cloud & DevOps, Development Tools
+ * @type {Array<Object>} Array of skill objects with name, icon, and title properties
+ */
+
+/* =============================================================================
+   1. SKILLS DATA & MANAGEMENT
+   ============================================================================= */
+
+/**
+ * Comprehensive skills data array containing all technical expertise
+ * Each skill object includes name, icon path, and descriptive title
+ * Organized by categories: Frontend, Backend, Databases, Cloud & DevOps, Tools
+ */
 const skillsData = [
+     // Frontend Technologies
      { name: 'React.js', icon: 'assets/images/skills-icon/React.png', title: 'React.js' },
      { name: 'TypeScript', icon: 'assets/images/skills-icon/typescript.png', title: 'TypeScript' },
      { name: 'JavaScript', icon: 'assets/images/skills-icon/java-script.png', title: 'JavaScript (ES6+)' },
      { name: 'HTML5', icon: 'assets/images/skills-icon/HTML5.png', title: 'HTML & CSS3' },
      { name: 'CSS3', icon: 'assets/images/skills-icon/CSS3.png', title: 'CSS3' },
      { name: 'Tailwind CSS', icon: 'assets/images/skills-icon/Tailwind CSS.png', title: 'Tailwind CSS' },
+     { name: 'Redux', icon: 'assets/images/skills-icon/Redux.png', title: 'Redux' },
+     { name: 'Vite', icon: 'assets/images/skills-icon/Vite.js.png', title: 'Vite' },
+     
+     // Backend Technologies
      { name: 'Node.js', icon: 'assets/images/skills-icon/Node.js.png', title: 'Node.js' },
-     { name: 'Python', icon: 'assets/images/skills-icon/python.png', title: 'Python (Django, Flask)' },
      { name: 'Express.js', icon: 'assets/images/skills-icon/Express.png', title: 'Express.js & REST APIs' },
      { name: 'NestJS', icon: 'assets/images/skills-icon/Nest.js.png', title: 'NestJS & Microservices' },
+     { name: 'Python', icon: 'assets/images/skills-icon/python.png', title: 'Python' },
      { name: 'GraphQL', icon: 'assets/images/skills-icon/GraphQL.png', title: 'GraphQL' },
+     { name: 'Socket.io', icon: 'assets/images/skills-icon/Socket.io.png', title: 'Socket.io' },
+     
+     // Databases
      { name: 'MongoDB', icon: 'assets/images/skills-icon/MongoDB.png', title: 'MongoDB & NoSQL' },
      { name: 'PostgreSQL', icon: 'assets/images/skills-icon/PostgresSQL.png', title: 'PostgreSQL' },
      { name: 'MySQL', icon: 'assets/images/skills-icon/MySQL.png', title: 'MySQL' },
      { name: 'Redis', icon: 'assets/images/skills-icon/Redis.png', title: 'Redis' },
+     
+     // Cloud & DevOps
      { name: 'AWS', icon: 'assets/images/skills-icon/AWS.png', title: 'AWS' },
      { name: 'Azure', icon: 'assets/images/skills-icon/Azure.png', title: 'Azure' },
      { name: 'Docker', icon: 'assets/images/skills-icon/Docker.png', title: 'Docker' },
      { name: 'Kubernetes', icon: 'assets/images/skills-icon/Kubernetes.png', title: 'Kubernetes' },
-     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git' },
-     { name: 'GitHub', icon: 'assets/images/skills-icon/GitHub.png', title: 'GitHub' },
      { name: 'Jenkins', icon: 'assets/images/skills-icon/Jenkins.png', title: 'Jenkins' },
      { name: 'Terraform', icon: 'assets/images/skills-icon/HashiCorp Terraform.png', title: 'HashiCorp Terraform' },
      { name: 'Ansible', icon: 'assets/images/skills-icon/Ansible.png', title: 'Ansible' },
-     { name: 'Jira', icon: 'assets/images/skills-icon/Jira.png', title: 'Jira' },
-     { name: 'Postman', icon: 'assets/images/skills-icon/Postman.png', title: 'Postman' },
-     { name: 'Vite', icon: 'assets/images/skills-icon/Vite.js.png', title: 'Vite' },
-     { name: 'Figma', icon: 'assets/images/skills-icon/Figma.png', title: 'Figma' },
-     { name: 'Redux', icon: 'assets/images/skills-icon/Redux.png', title: 'Redux' },
-     { name: 'Socket.io', icon: 'assets/images/skills-icon/Socket.io.png', title: 'Socket.io' },
      { name: 'Apache Kafka', icon: 'assets/images/skills-icon/Apache Kafka.png', title: 'Apache Kafka' },
      { name: 'NGINX', icon: 'assets/images/skills-icon/NGINX.png', title: 'NGINX' },
      { name: 'Grafana', icon: 'assets/images/skills-icon/Grafana.png', title: 'Grafana' },
      { name: 'Prometheus', icon: 'assets/images/skills-icon/Prometheus.png', title: 'Prometheus' },
+     
+     // Development Tools & Others
+     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git' },
+     { name: 'GitHub', icon: 'assets/images/skills-icon/GitHub.png', title: 'GitHub' },
+     { name: 'Jira', icon: 'assets/images/skills-icon/Jira.png', title: 'Jira' },
+     { name: 'Postman', icon: 'assets/images/skills-icon/Postman.png', title: 'Postman' },
+     { name: 'Figma', icon: 'assets/images/skills-icon/Figma.png', title: 'Figma' },
      { name: 'Linux', icon: 'assets/images/skills-icon/Linux.png', title: 'Linux' },
-     { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
-];
+          { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
+ ];
 
-// Function to generate skill icons dynamically
+/*
+ * ========================================
+ * 2. SCROLL TRACKING FUNCTIONALITY
+ * ========================================
+ * Implements a visual progress indicator that tracks user scroll position
+ * and provides smooth visual feedback at the top of the page
+ */
+
+/**
+ * Updates the scroll progress bar based on current scroll position
+ * Creates a visual indicator showing percentage of page scrolled
+ * Uses smooth animation and backdrop blur effects for modern appearance
+ */
+function updateProgressBar() {
+     // Calculate scroll percentage based on total document height
+     const scrollTop = window.pageYOffset;
+     const docHeight = document.body.scrollHeight - window.innerHeight;
+     const scrollPercent = (scrollTop / docHeight) * 100;
+     
+     // Update progress bar width with smooth transition
+     const progressBar = document.querySelector('.progress-bar');
+     if (progressBar) {
+          progressBar.style.width = scrollPercent + '%';
+     }
+}
+
+/*
+ * ========================================
+ * 3. SKILLS ANIMATION SYSTEM
+ * ========================================
+ * Dynamic skill icon generation and infinite scroll animation
+ * Creates smooth continuous scrolling effect for technology showcase
+ */
+
+/**
+ * Generates skill icons dynamically for the scrolling animation
+ * Creates interactive skill cards with hover effects and proper accessibility
+ * Implements infinite scroll animation for continuous visual flow
+ */
 function generateSkillIcons() {
      const scrollerInner = document.querySelector('.scroller__inner');
      if (!scrollerInner) return;
-     
+
      // Clear existing content
      scrollerInner.innerHTML = '';
-     
+
      // Create skills for scrolling animation
      skillsData.forEach((skill, index) => {
           const skillItem = document.createElement('li');
@@ -54,6 +145,92 @@ function generateSkillIcons() {
           `;
           scrollerInner.appendChild(skillItem);
      });
+}
+
+/*
+ * ========================================
+ * 2. EXPERIENCE CALCULATOR
+ * ========================================
+ * Automatically calculates and displays years of professional experience
+ * Updates dynamically based on joining date and current date
+ */
+
+/**
+ * Calculates and updates years of professional experience
+ * Computes experience from joining date to current date
+ * Formats display as years and months with appropriate labels
+ */
+function updateExperience() {
+     const joiningDate = new Date('2025-05-19'); // May 19, 2025
+     const currentDate = new Date();
+
+     // Calculate the difference in time
+     const timeDiff = currentDate.getTime() - joiningDate.getTime();
+     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+     // Calculate years and months
+     const yearsDiff = currentDate.getFullYear() - joiningDate.getFullYear();
+     const monthsDiff = currentDate.getMonth() - joiningDate.getMonth();
+
+     let totalMonths = yearsDiff * 12 + monthsDiff;
+
+     // Adjust for day of month
+     if (currentDate.getDate() < joiningDate.getDate()) {
+          totalMonths--;
+     }
+
+     // Convert to years and remaining months
+     const years = Math.floor(totalMonths / 12);
+     const months = totalMonths % 12;
+
+     // Format the experience string and determine label
+     let experienceText;
+     let experienceLabel;
+
+     if (years === 0) {
+          if (months === 0) {
+               experienceText = "< 1";
+               experienceLabel = "Month Experience";
+          } else if (months === 1) {
+               experienceText = "1";
+               experienceLabel = "Month Experience";
+          } else {
+               experienceText = `${months}`;
+               experienceLabel = "Months Experience";
+          }
+     } else if (years === 1) {
+          if (months === 0) {
+               experienceText = "1";
+               experienceLabel = "Year Experience";
+          } else if (months === 1) {
+               experienceText = "1.1";
+               experienceLabel = "Years Experience";
+          } else {
+               experienceText = `1.${Math.round((months / 12) * 10)}`;
+               experienceLabel = "Years Experience";
+          }
+     } else {
+          if (months === 0) {
+               experienceText = `${years}`;
+               experienceLabel = "Years Experience";
+          } else {
+               const decimal = Math.round((months / 12) * 10);
+               experienceText = `${years}.${decimal}`;
+               experienceLabel = "Years Experience";
+          }
+     }
+
+     // Update the DOM elements
+     const experienceElement = document.getElementById('experienceYears');
+     const labelElement = document.getElementById('experienceLabel');
+
+     if (experienceElement) {
+          experienceElement.textContent = experienceText;
+     }
+
+     if (labelElement) {
+          labelElement.textContent = experienceLabel;
+     }
 }
 
 // Scrolling animation logic
@@ -82,12 +259,61 @@ function addScrollingAnimation() {
      }
 }
 
+/*
+ * ========================================
+ * 4. NAVIGATION & SCROLL HANDLERS
+ * ========================================
+ * Manages navigation highlighting, smooth scrolling, and scroll-based interactions
+ * Provides seamless user experience with visual feedback and progress tracking
+ */
+
+/**
+ * Main navigation and scroll management system
+ * Handles section highlighting, progress bar updates, and smooth scrolling behavior
+ * Implements intersection observer for accurate section detection
+ */
 // Highlight nav link based on current section
 document.addEventListener('DOMContentLoaded', function () {
      const navLinks = document.querySelectorAll('.nav-link');
      const sections = ['about', 'experience', 'projects', 'skills', 'contact'];
      const sectionEls = sections.map(id => document.getElementById(id));
 
+     // Progress Bar Functionality - Get reference to progress indicator
+     const progressBar = document.getElementById('scrollProgress');
+
+/*
+ * ========================================
+ * SCROLL TRACKING FUNCTIONALITY
+ * ========================================
+ * Implements a visual progress indicator that tracks user scroll position
+ * and provides smooth visual feedback at the top of the page
+ */
+
+/**
+ * Updates the scroll progress bar based on current scroll position
+ * Creates a visual indicator showing percentage of page scrolled
+ * Uses smooth animation and backdrop blur effects for modern appearance
+ */
+ /**
+  * Updates scroll progress bar based on current scroll position  
+  * Calculates percentage of page scrolled and updates visual indicator
+  * Uses cross-browser compatible scroll measurement approach
+  */
+ function updateProgressBar() {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+
+          if (progressBar) {
+               progressBar.style.width = scrolled + '%';
+          }
+     }
+
+     /**
+      * Highlights active navigation link based on current section in viewport
+      * Uses element positioning to determine which section is currently visible
+      * Provides visual feedback for user's current location on page
+      */
      function highlightNav() {
           let current = -1;
           sectionEls.forEach((section, i) => {
@@ -106,35 +332,86 @@ document.addEventListener('DOMContentLoaded', function () {
                }
           });
      }
-     window.addEventListener('scroll', highlightNav);
+
+     window.addEventListener('scroll', () => {
+          highlightNav();
+          updateProgressBar();
+     });
+
      highlightNav();
-     
+     updateProgressBar(); // Initial call
+     updateExperience(); // Calculate and display experience
+
      // Generate skill icons dynamically and add scrolling animation
      generateSkillIcons();
      addScrollingAnimation();
 });
+
+/*
+ * ========================================
+ * 5. RESUME DOWNLOAD FUNCTIONALITY  
+ * ========================================
+ * Handles resume download with user feedback and notification system
+ * Provides smooth download experience with delayed success confirmation
+ */
+
+/**
+ * Initiates resume download and provides user feedback
+ * Creates download link dynamically and triggers download action
+ * Shows delayed success notification for better user experience
+ */
 function downloadResume() {
+     // Create temporary download link element
      const link = document.createElement('a');
-    link.href = 'Nikhil_Malviya_FullStack_Developer_Resume.pdf';  // file path
-    link.download = 'Nikhil_Malviya_Resume'; // downloaded file name
-    link.click();
-    // Show smooth notification
-  showNotification("Resume downloaded successfully!");
+     link.href = 'resume/Nikhil_Malviya_FullStack_Developer_Resume.pdf';  // Resume file path
+     link.download = 'Nikhil_Malviya_FullStack_Developer_Resume'; // Downloaded file name
+     link.click(); // Trigger download
+
+     // Show notification with delay to feel more natural and allow download to start
+     setTimeout(() => {
+          showNotification("Resume downloaded successfully!");
+     }, 1500); // 1500ms delay for better UX
 }
 
-// Show Notification
+/*
+ * ========================================
+ * 6. NOTIFICATION SYSTEM
+ * ========================================
+ * User feedback system for actions and status updates
+ * Provides clean, temporary notifications with smooth animations
+ */
+
+/**
+ * Displays temporary notification message to user
+ * Creates styled notification element with automatic removal
+ * Provides visual feedback for user actions and system status
+ */
 function showNotification(message) {
-  const notif = document.getElementById("notification");
-  notif.innerText = message;
-  notif.classList.add("show");
+     // Get notification element and update content
+     const notif = document.getElementById("notification");
+     notif.innerText = message;
+     notif.classList.add("show"); // Show notification with CSS animation
 
-  // Hide after 3 seconds
-  setTimeout(() => {
-    notif.classList.remove("show");
-  }, 3000);
+     // Automatically hide notification after 3 seconds
+     setTimeout(() => {
+          notif.classList.remove("show");
+     }, 3000);
 }
 
-// --- Project Data ---
+/*
+ * ========================================
+ * 7. PROJECT MANAGEMENT SYSTEM
+ * ========================================
+ * Portfolio project data and pagination functionality
+ * Manages project display, filtering, and interactive navigation
+ */
+
+/**
+ * Comprehensive projects database containing portfolio work
+ * Each project includes title, description, technologies, and type classification
+ * Organized to showcase full-stack development capabilities and diverse expertise
+ * @type {Array<Object>} Array of project objects with detailed information
+ */
 const projects = [
      {
           title: 'NGO Saathi',
@@ -174,16 +451,26 @@ const projects = [
      },
 ];
 
-let currentPage = 1;
-const projectsPerPage = 6;
-let filteredProjects = projects;
+// Project pagination variables
+let currentPage = 1;              // Current page number for pagination
+const projectsPerPage = 6;        // Number of projects to display per page
+let filteredProjects = projects;  // Currently filtered project list
 
+/**
+ * Renders projects for current page with pagination controls
+ * Creates project cards dynamically and updates pagination state
+ * Handles project display, navigation buttons, and page indicators
+ */
 function renderProjects() {
      const grid = document.querySelector('.project-grid');
-     grid.innerHTML = '';
+     grid.innerHTML = ''; // Clear existing project cards
+     
+     // Calculate pagination boundaries
      const start = (currentPage - 1) * projectsPerPage;
      const end = start + projectsPerPage;
      const pageProjects = filteredProjects.slice(start, end);
+     
+     // Generate project cards for current page
      pageProjects.forEach(project => {
           const card = document.createElement('div');
           card.className = 'project-card';
@@ -194,17 +481,25 @@ function renderProjects() {
     `;
           grid.appendChild(card);
      });
+     
+     // Update pagination controls and indicators
      document.getElementById('pageIndicator').textContent = `Page ${currentPage}`;
      document.getElementById('prevPage').disabled = currentPage === 1;
      document.getElementById('nextPage').disabled = end >= filteredProjects.length;
 }
 
+/**
+ * Project pagination event handlers
+ * Manages navigation between project pages with smooth transitions
+ */
+// Previous page navigation
 document.getElementById('prevPage').addEventListener('click', () => {
      if (currentPage > 1) {
           currentPage--;
           renderProjects();
      }
 });
+// Next page navigation
 document.getElementById('nextPage').addEventListener('click', () => {
      if ((currentPage * projectsPerPage) < filteredProjects.length) {
           currentPage++;
@@ -240,11 +535,11 @@ document.addEventListener('DOMContentLoaded', () => {
      // Add parallax effect to hero section
      const heroSection = document.querySelector('.hero');
      const heroSvg = document.querySelector('.hero-graphic svg');
-     
+
      window.addEventListener('scroll', () => {
           const scrolled = window.pageYOffset;
           const parallax = scrolled * 0.3;
-          
+
           if (heroSvg && scrolled < window.innerHeight) {
                heroSvg.style.transform = `translateY(${parallax}px)`;
           }
@@ -255,20 +550,20 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.addEventListener('mouseenter', () => {
                btn.style.transform = 'translateY(-2px) scale(1.05)';
           });
-          
+
           btn.addEventListener('mouseleave', () => {
                if (!btn.classList.contains('active')) {
                     btn.style.transform = 'translateY(0) scale(1)';
                }
           });
-          
+
           btn.addEventListener('click', () => {
                // Remove active class from all buttons
                document.querySelectorAll('.project-tags button').forEach(b => {
                     b.classList.remove('active');
                     b.style.transform = 'translateY(0) scale(1)';
                });
-               
+
                // Add active class to clicked button
                btn.classList.add('active');
                btn.style.transform = 'translateY(-2px) scale(1.05)';
@@ -281,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
           card.addEventListener('mouseenter', () => {
                card.style.transform = 'translateY(-8px)';
           });
-          
+
           card.addEventListener('mouseleave', () => {
                card.style.transform = 'translateY(0)';
           });
@@ -292,17 +587,17 @@ document.addEventListener('DOMContentLoaded', () => {
      if (logo) {
           logo.addEventListener('click', (e) => {
                e.preventDefault();
-               window.scrollTo({ 
-                    top: 0, 
-                    behavior: 'smooth' 
+               window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                });
           });
-          
+
           logo.style.cursor = 'pointer';
           logo.addEventListener('mouseenter', () => {
                logo.style.transform = 'scale(1.05)';
           });
-          
+
           logo.addEventListener('mouseleave', () => {
                logo.style.transform = 'scale(1)';
           });
@@ -322,81 +617,156 @@ document.addEventListener('DOMContentLoaded', () => {
           });
      });
 
-     // --- Dark/Light Mode Toggle ---
-     const themeToggle = document.getElementById('theme-toggle');
-     // Check localStorage for theme
-     let isDark = localStorage.getItem('theme') !== 'light'; // default is dark
-     function setTheme(dark) {
-          if (dark) {
-               document.body.classList.remove('light-mode');
-               themeToggle.checked = true;
-          } else {
-               document.body.classList.add('light-mode');
-               themeToggle.checked = false;
-          }
+/*
+ * ========================================
+ * 9. THEME TOGGLE SYSTEM
+ * ========================================
+ * Manages dark/light mode switching with persistent user preference
+ * Provides smooth theme transitions and local storage integration
+ */
+
+/**
+ * Theme management system with localStorage persistence
+ * Handles theme switching between dark and light modes
+ * Maintains user preference across browser sessions
+ */
+// Get theme toggle element
+const themeToggle = document.getElementById('theme-toggle');
+
+// Check localStorage for saved theme preference (default is dark mode)
+let isDark = localStorage.getItem('theme') !== 'light';
+
+/**
+ * Sets the theme mode and updates UI elements accordingly
+ * @param {boolean} dark - Whether to use dark mode (true) or light mode (false)
+ */
+function setTheme(dark) {
+     if (dark) {
+          document.body.classList.remove('light-mode');
+          themeToggle.checked = true;
+     } else {
+          document.body.classList.add('light-mode');
+          themeToggle.checked = false;
      }
-     setTheme(isDark);
-     themeToggle.addEventListener('change', () => {
-          if (themeToggle.checked) {
-               document.body.classList.remove('light-mode');
-               localStorage.setItem('theme', 'dark');
+}
+
+// Initialize theme based on saved preference
+setTheme(isDark);
+
+// Theme toggle event listener with localStorage persistence
+themeToggle.addEventListener('change', () => {
+     if (themeToggle.checked) {
+          // Switch to dark mode
+          document.body.classList.remove('light-mode');
+          localStorage.setItem('theme', 'dark');
+     } else {
+          // Switch to light mode
+          document.body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light');
+     }
+});
+
+/*
+ * ========================================
+ * 10. SCROLL ANIMATION SYSTEM
+ * ========================================
+ * Manages scroll-triggered animations and visual effects
+ * Creates engaging user experience with smooth section reveals
+ */
+
+/**
+ * Handles scroll-triggered animations for sections
+ * Adds/removes visibility classes based on scroll position
+ * Creates smooth reveal effects as user scrolls through content
+ */
+function onScrollAnimate() {
+     animatedSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          // Trigger animation when section is 50px from bottom of viewport
+          if (rect.top < window.innerHeight - 50) {
+               section.classList.add('visible');
           } else {
-               document.body.classList.add('light-mode');
-               localStorage.setItem('theme', 'light');
+               section.classList.remove('visible');
           }
      });
+}
 
-     function onScrollAnimate() {
-          animatedSections.forEach(section => {
-               const rect = section.getBoundingClientRect();
-               if (rect.top < window.innerHeight - 50) {
-                    section.classList.add('visible');
-               } else {
-                    section.classList.remove('visible');
-               }
-          });
-     }
-     window.addEventListener('scroll', onScrollAnimate);
-     onScrollAnimate(); // Initial check
+// Attach scroll animation handler and run initial check
+window.addEventListener('scroll', onScrollAnimate);
+onScrollAnimate(); // Initial check for sections already in view
 
-     // --- Navbar Show/Hide Animation ---
-     const header = document.querySelector('header');
-     let lastScrollY = window.scrollY;
-     let ticking = false;
-     function handleNavbar() {
-          const currentScrollY = window.scrollY;
-          if (currentScrollY > lastScrollY && currentScrollY > 60) {
-               // Scrolling down
-               header.classList.remove('navbar-show');
-               header.classList.add('navbar-hide');
-          } else {
-               // Scrolling up
-               header.classList.remove('navbar-hide');
-               header.classList.add('navbar-show');
-          }
-          lastScrollY = currentScrollY;
-          ticking = false;
-     }
-     function onScroll() {
-          if (!ticking) {
-               window.requestAnimationFrame(handleNavbar);
-               ticking = true;
-          }
-     }
-     window.addEventListener('scroll', onScroll);
-     // Always show navbar on load
-     header.classList.add('navbar-show');
+/*
+ * ========================================
+ * 11. NAVBAR SHOW/HIDE FUNCTIONALITY
+ * ========================================
+ * Implements smart navbar behavior based on scroll direction
+ * Hides navbar on scroll down, shows on scroll up for better UX
+ */
 
-     // --- Enhanced Contact Form ---
+/**
+ * Smart navbar visibility control based on scroll direction
+ * Enhances user experience by hiding navigation when scrolling down
+ * and showing it when scrolling up for easy access
+ */
+const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+/**
+ * Handles navbar visibility based on scroll direction
+ * Uses requestAnimationFrame for smooth performance
+ */
+function handleNavbar() {
+     const currentScrollY = window.scrollY;
+     if (currentScrollY > lastScrollY && currentScrollY > 60) {
+          // Scrolling down - hide navbar
+          header.classList.remove('navbar-show');
+          header.classList.add('navbar-hide');
+     } else {
+          // Scrolling up - show navbar
+          header.classList.remove('navbar-hide');
+          header.classList.add('navbar-show');
+     }
+     lastScrollY = currentScrollY;
+     ticking = false;
+}
+
+/**
+ * Optimized scroll handler using requestAnimationFrame
+ * Prevents excessive function calls during scroll events
+ */
+function onScroll() {
+     if (!ticking) {
+          window.requestAnimationFrame(handleNavbar);
+          ticking = true;
+     }
+}
+
+// Attach scroll handler and ensure navbar is visible on load
+window.addEventListener('scroll', onScroll);
+header.classList.add('navbar-show'); // Always show navbar on page load
+
+/*
+ * ========================================
+ * 12. CONTACT FORM ENHANCEMENT
+ * ========================================
+ * Enhanced contact form with validation, loading states, and user feedback
+ * Provides smooth form submission experience with visual indicators
+ */
+
+/**
+ * Enhanced contact form functionality with validation and feedback
+ * Includes loading states, success indicators, and field validation
+ */
      const contactForm = document.querySelector('.contact-form');
      const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
      const submitBtn = document.querySelector('.contact-btn');
 
      // Add form validation and enhancement
      if (contactForm) {
-          contactForm.addEventListener('submit', function(e) {
+          contactForm.addEventListener('submit', function (e) {
                e.preventDefault();
-               
+
                // Add loading state
                const originalText = submitBtn.innerHTML;
                submitBtn.innerHTML = `
@@ -416,10 +786,10 @@ document.addEventListener('DOMContentLoaded', () => {
                          Message Sent!
                     `;
                     submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-                    
+
                     // Reset form
                     contactForm.reset();
-                    
+
                     // Reset button after delay
                     setTimeout(() => {
                          submitBtn.innerHTML = originalText;
@@ -431,40 +801,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Add input focus effects
           formInputs.forEach(input => {
-               input.addEventListener('focus', function() {
+               input.addEventListener('focus', function () {
                     this.parentElement.classList.add('focused');
                });
-               
-               input.addEventListener('blur', function() {
+
+               input.addEventListener('blur', function () {
                     if (!this.value) {
                          this.parentElement.classList.remove('focused');
                     }
                });
 
                // Add input validation
-               input.addEventListener('input', function() {
+               input.addEventListener('input', function () {
                     validateField(this);
                });
           });
      }
 
-     function validateField(field) {
-          const value = field.value.trim();
-          const type = field.type;
-          let isValid = true;
+/**
+ * Validates individual form fields with real-time feedback
+ * Provides visual indicators for field validation states
+ * Supports email validation and required field checking
+ * @param {HTMLElement} field - The form field element to validate
+ */
+function validateField(field) {
+     const value = field.value.trim();
+     const type = field.type;
+     let isValid = true;
 
-          // Remove existing error styling
-          field.style.borderColor = '';
-          
-          if (value === '') {
-               isValid = false;
-          } else if (type === 'email') {
-               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-               isValid = emailRegex.test(value);
-          }
+     // Remove existing error styling before validation
+     field.style.borderColor = '';
 
-          if (!isValid && value !== '') {
-               field.style.borderColor = '#ef4444';
+     // Check if field is empty (required validation)
+     if (value === '') {
+          isValid = false;
+     } else if (type === 'email') {
+          // Email format validation using regex pattern
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          isValid = emailRegex.test(value);
+     }
+
+     // Apply error styling for invalid fields with content
+     if (!isValid && value !== '') {
+          field.style.borderColor = '#ef4444'; // Red border for errors
                field.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.1)';
           } else if (isValid && value !== '') {
                field.style.borderColor = '#10b981';
@@ -487,160 +866,19 @@ document.addEventListener('DOMContentLoaded', () => {
      document.head.appendChild(style);
 });
 
-// ===== SKILLS ICON ANIMATION =====
-// document.addEventListener('DOMContentLoaded', function() {
-//      const skillIcons = document.querySelectorAll('.skill-icon');
-//      const skillsSection = document.querySelector('#skills');
-     
-//      if (!skillIcons.length || !skillsSection) return;
-     
-//      let animationTimer;
-//      let isAnimating = false;
-     
-//      function restartAnimation() {
-//           if (isAnimating) return;
-          
-//           isAnimating = true;
-          
-//           // Reset all icons to initial state
-//           skillIcons.forEach(icon => {
-//                icon.style.animation = 'none';
-//                icon.style.opacity = '0';
-//                icon.style.transform = 'scale(0) translateY(20px) rotateZ(-15deg)';
-//           });
-          
-//           // Force reflow
-//           skillIcons[0].offsetHeight;
-          
-//           // Restart animations with sequential delays
-//           skillIcons.forEach((icon, index) => {
-//                const delay = (index % 25) * 0.2; // Reset delay every 25 icons
-               
-//                setTimeout(() => {
-//                     icon.style.animation = 'appearOneByOne 2s ease-out forwards';
-//                     icon.style.animationDelay = '0s';
-//                }, delay * 1000);
-//           });
-          
-//           // Set timer for next restart (after all animations complete)
-//           const totalDuration = (25 * 0.2 + 2 + 3) * 1000; // 25 icons * 0.2s delay + 2s animation + 3s pause
-          
-//           animationTimer = setTimeout(() => {
-//                isAnimating = false;
-//                restartAnimation();
-//           }, totalDuration);
-//      }
-     
-//      function pauseAnimation() {
-//           if (animationTimer) {
-//                clearTimeout(animationTimer);
-//           }
-//           skillIcons.forEach(icon => {
-//                icon.style.animationPlayState = 'paused';
-//           });
-//      }
-     
-//      function resumeAnimation() {
-//           skillIcons.forEach(icon => {
-//                icon.style.animationPlayState = 'running';
-//           });
-          
-//           if (!isAnimating) {
-//                restartAnimation();
-//           }
-//      }
-     
-//      // Intersection Observer to start animation when section is visible
-//      const observer = new IntersectionObserver((entries) => {
-//           entries.forEach(entry => {
-//                if (entry.isIntersecting) {
-//                     if (!isAnimating) {
-//                          restartAnimation();
-//                     }
-//                } else {
-//                     pauseAnimation();
-//                }
-//           });
-//      }, { threshold: 0.3 });
-     
-//      observer.observe(skillsSection);
-     
-//      // Pause/resume on hover
-//      skillsSection.addEventListener('mouseenter', pauseAnimation);
-//      skillsSection.addEventListener('mouseleave', resumeAnimation);
-     
-//      // Pause when page is not visible
-//      document.addEventListener('visibilitychange', () => {
-//           if (document.hidden) {
-//                pauseAnimation();
-//           } else {
-//                resumeAnimation();
-//           }
-//      });
-     
-//      // Add sparkle effect on icon appearance
-//      // function createSparkle(icon) {
-//      //      for (let i = 0; i < 3; i++) {
-//      //           const sparkle = document.createElement('div');
-//      //           sparkle.style.cssText = `
-//      //                position: absolute;
-//      //                top: ${Math.random() * 100}%;
-//      //                left: ${Math.random() * 100}%;
-//      //                width: 4px;
-//      //                height: 4px;
-//      //                background: var(--accent-light);
-//      //                border-radius: 50%;
-//      //                pointer-events: none;
-//      //                animation: sparkleEffect 1s ease-out forwards;
-//      //                z-index: 10;
-//      //           `;
-               
-//      //           icon.appendChild(sparkle);
-               
-//      //           setTimeout(() => {
-//      //                if (sparkle.parentNode) {
-//      //                     sparkle.parentNode.removeChild(sparkle);
-//      //                }
-//      //           }, 1000);
-//      //      }
-//      // }
-     
-//      // Add sparkle animation CSS
-//      // const sparkleStyles = document.createElement('style');
-//      // sparkleStyles.textContent = `
-//      //      @keyframes sparkleEffect {
-//      //           0% {
-//      //                opacity: 1;
-//      //                transform: scale(0) rotate(0deg);
-//      //           }
-//      //           50% {
-//      //                opacity: 1;
-//      //                transform: scale(1) rotate(180deg);
-//      //           }
-//      //           100% {
-//      //                opacity: 0;
-//      //                transform: scale(0) rotate(360deg);
-//      //           }
-//      //      }
-          
-//      //      .skill-icon.appearing {
-//      //           position: relative;
-//      //           overflow: visible;
-//      //      }
-//      // `;
-//      document.head.appendChild(sparkleStyles);
-     
-//      // Listen for animation completion to add sparkle effect
-//      skillIcons.forEach(icon => {
-//           icon.addEventListener('animationend', (e) => {
-//                if (e.animationName === 'appearOneByOne') {
-//                     icon.classList.add('appearing');
-//                     createSparkle(icon);
-                    
-//                     setTimeout(() => {
-//                          icon.classList.remove('appearing');
-//                     }, 1000);
-//                }
-//           });
-//      });
-// });
+/*
+ * ===============================================================================
+ * END OF PORTFOLIO WEBSITE JAVASCRIPT
+ * ===============================================================================
+ * 
+ * This file provides comprehensive interactive functionality for the portfolio
+ * website including theme management, skills animation, project pagination,
+ * experience calculation, and enhanced user interface interactions.
+ * 
+ * All functions are documented with JSDoc comments for maintainability.
+ * The code follows modern JavaScript practices and is optimized for performance.
+ * 
+ * Author: Nikhil Malviya
+ * Last Updated: 2025
+ * ===============================================================================
+ */

@@ -2,19 +2,35 @@
 <html lang="en">
 
 <head>
+     <!-- Basic meta tags for proper document structure and mobile responsiveness -->
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Portfolio</title>
+     <title>Portfolio - Nikhil Malviya | Full Stack Developer</title>
+     
+     <!-- CSS Stylesheets: Main styles, responsive design, and external library -->
      <link rel="stylesheet" href="assets/css/styles.css">
      <link rel="stylesheet" href="assets/css/responsive.css">
      <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
 </head>
 
 <body>
+     <!-- ==================== SCROLL PROGRESS BAR ==================== -->
+     <!-- Fixed position progress bar that indicates page scroll percentage -->
+     <div class="progress-container">
+          <div class="progress-bar" id="scrollProgress"></div>
+     </div>
+
+     <!-- ==================== HEADER NAVIGATION ==================== -->
+     <!-- Main header with logo, navigation menu, and theme toggle -->
      <header>
-          <div class="logo" style="cursor:pointer;"><img src="
-               assets\images\logo\nikhil_signature_6366f1_from_uploaded.png" alt="Nikhil Logo"
-                    style="height:120px;vertical-align:middle;"></div>
+          <!-- Logo section with click-to-scroll-to-top functionality -->
+          <div class="logo" style="cursor:pointer;">
+               <img src="assets\images\logo\nikhil_signature_6366f1_from_uploaded.png" 
+                    alt="Nikhil Malviya Logo - Personal Signature" 
+                    style="height:120px;vertical-align:middle;">
+          </div>
+          
+          <!-- Main navigation menu for section jumping -->
           <nav>
                <a href="#about" class="nav-link">About</a>
                <a href="#experience" class="nav-link">Experience</a>
@@ -22,11 +38,15 @@
                <a href="#skills" class="nav-link">Skills</a>
                <a href="#contact" class="nav-link">Contact</a>
           </nav>
-          <!-- Theme toggle from Uiverse.io by Galahhad -->
+          
+          <!-- Animated theme toggle switch (Dark/Light mode) - Credit: Uiverse.io by Galahhad -->
           <label class="theme-switch">
                <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle">
                <div class="theme-switch__container">
+                    <!-- Cloud elements for visual effects -->
                     <div class="theme-switch__clouds"></div>
+                    
+                    <!-- Star pattern SVG for night sky effect -->
                     <div class="theme-switch__stars-container">
                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
                               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -34,8 +54,10 @@
                                    fill="currentColor"></path>
                          </svg>
                     </div>
+                    <!-- Sun/Moon container for the toggle animation -->
                     <div class="theme-switch__circle-container">
                          <div class="theme-switch__sun-moon-container">
+                              <!-- Moon element with crater spots for dark mode -->
                               <div class="theme-switch__moon">
                                    <div class="theme-switch__spot"></div>
                                    <div class="theme-switch__spot"></div>
@@ -44,24 +66,39 @@
                          </div>
                     </div>
                </div>
+               <!-- Notification popup for user feedback (e.g., resume download) -->
                <div id="notification"></div>
           </label>
      </header>
 
+     <!-- ==================== HERO SECTION ==================== -->
+     <!-- Main landing section with introduction and call-to-action -->
      <section class="hero">
           <div class="hero-content">
+               <!-- Left side: Text content and CTA button -->
                <div class="hero-left">
                     <h1>
-                         <span class="hero-headline-main">Innovating the Future,</span><br>
+                         <span class="hero-headline-main">Innovating the Future,</span>
                          <span class="hero-headline-sub">One Line of Code at a Time</span>
                     </h1>
                     <p class="hero-desc">Bridging complex challenges with elegant, high-performance solutions.</p>
-                    <button class="resume-btn" onclick="downloadResume()">Download Resume</button>
+                    
+                    <!-- Animated resume download button -->
+                    <button class="botao" onclick="downloadResume()">
+                         <span class="texto">Resume</span>
+                         <svg class="mysvg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                         </svg>
+                    </button>
                </div>
+               
+               <!-- Right side: Decorative animated SVG graphics -->
                <div class="hero-right">
                     <div class="hero-graphic">
+                         <!-- Custom SVG with animated elements and gradients -->
                          <svg width="620" height="420" viewBox="0 0 520 420" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
+                              <!-- SVG filters and gradients for visual effects -->
                               <defs>
                                    <filter id="glow">
                                         <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -83,28 +120,26 @@
                               <circle cx="380" cy="210" r="130" fill="url(#heroGrad2)" />
                               <!-- Rectangle accent with gradient -->
                               <rect x="270" y="140" width="130" height="70" rx="28" fill="url(#heroGrad1)" />
-                              <!-- Small left circle -->
+                              
+                              <!-- Static decorative elements -->
                               <circle cx="120" cy="120" r="58" fill="var(--accent-dark)" fill-opacity="0.15" />
-                              <!-- Top right ellipse -->
                               <ellipse cx="470" cy="80" rx="48" ry="48" fill="var(--surface-dark)" fill-opacity="0.8" />
-                              <!-- Bottom left ellipse -->
-                              <ellipse cx="100" cy="360" rx="38" ry="24" fill="var(--accent-light)"
-                                   fill-opacity="0.12" />
-                              <!-- Animated accent circles -->
+                              <ellipse cx="100" cy="360" rx="38" ry="24" fill="var(--accent-light)" fill-opacity="0.12" />
+                              
+                              <!-- Animated accent circles with breathing effects -->
                               <circle cx="80" cy="60" r="28" fill="var(--accent-dark)" fill-opacity="0.18">
                                    <animate attributeName="r" values="28;38;28" dur="2.5s" repeatCount="indefinite" />
-                                   <animate attributeName="fill-opacity" values="0.18;0.08;0.18" dur="2.5s"
-                                        repeatCount="indefinite" />
+                                   <animate attributeName="fill-opacity" values="0.18;0.08;0.18" dur="2.5s" repeatCount="indefinite" />
                               </circle>
                               <circle cx="490" cy="380" r="24" fill="var(--accent-light)" fill-opacity="0.14">
                                    <animate attributeName="r" values="24;38;24" dur="2.2s" repeatCount="indefinite" />
-                                   <animate attributeName="fill-opacity" values="0.14;0.04;0.14" dur="2.2s"
-                                        repeatCount="indefinite" />
+                                   <animate attributeName="fill-opacity" values="0.14;0.04;0.14" dur="2.2s" repeatCount="indefinite" />
                               </circle>
                               <ellipse cx="240" cy="80" rx="24" ry="14" fill="var(--primary-light)" fill-opacity="0.10">
                                    <animate attributeName="rx" values="24;38;24" dur="2.8s" repeatCount="indefinite" />
                               </ellipse>
-                              <!-- Extra animated circles for more visual interest -->
+                              
+                              <!-- Additional animated elements for visual richness -->
                               <circle cx="180" cy="340" r="18" fill="var(--accent-dark)" fill-opacity="0.16">
                                    <animate attributeName="r" values="18;32;18" dur="2.1s" repeatCount="indefinite" />
                               </circle>
@@ -114,13 +149,13 @@
                               <circle cx="320" cy="60" r="14" fill="var(--primary-light)" fill-opacity="0.13">
                                    <animate attributeName="r" values="14;24;14" dur="2.3s" repeatCount="indefinite" />
                               </circle>
-                              <!-- Center N letter with enhanced styling -->
+                              
+                              <!-- Central 'N' letter with glow effect and subtle animation -->
                               <text x="215" y="270" font-size="140" font-family="Inter, Arial" font-weight="bold"
                                    fill="#fff" filter="url(#glow)"
                                    style="filter: drop-shadow(0 4px 24px var(--accent-dark));">
                                    N
-                                   <animate attributeName="font-size" values="140;145;140" dur="3s"
-                                        repeatCount="indefinite" />
+                                   <animate attributeName="font-size" values="140;145;140" dur="3s" repeatCount="indefinite" />
                               </text>
                          </svg>
                     </div>
@@ -128,15 +163,19 @@
           </div>
      </section>
 
+     <!-- ==================== ABOUT SECTION ==================== -->
+     <!-- Personal introduction and professional background -->
      <section id="about" class="about-me">
           <h2>About Me</h2>
           <div class="about-container">
                <div class="about-content">
+                    <!-- Main text content describing professional background -->
                     <div class="about-text">
                          <p class="about-intro">I'm a <strong>passionate and hands-on Software Engineer</strong> with a
                               focus on building scalable and impactful digital solutions. Currently, I work at
                               <em>Reliablesoft</em>, where I'm contributing to the backend development of
-                              enterprise-grade platforms using cutting-edge technologies.</p>
+                              enterprise-grade platforms using cutting-edge technologies.
+                         </p>
 
                          <p class="about-highlight">My expertise spans across <span
                                    class="tech-highlight">NestJS</span>, <span class="tech-highlight">TypeORM</span>,
@@ -154,10 +193,13 @@
                               complete fullstack developer ready for complex, multi-faceted challenges.</p>
                     </div>
 
+                    <!-- Visual elements with animated code icon and statistics -->
                     <div class="about-visual">
                          <div class="about-icon">
+                              <!-- Custom animated SVG representing coding and development -->
                               <svg width="120" height="120" viewBox="0 0 120 120" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
+                                   <!-- Gradient definitions for visual effects -->
                                    <defs>
                                         <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                              <stop offset="0%" style="stop-color:var(--accent-dark);stop-opacity:1" />
@@ -221,10 +263,12 @@
                               </svg>
                          </div>
 
+                         <!-- Dynamic statistics display with automatic experience calculation -->
                          <div class="about-stats">
                               <div class="stat-item">
-                                   <span class="stat-number">2+</span>
-                                   <span class="stat-label">Years Experience</span>
+                                   <!-- Automatically calculated experience based on joining date -->
+                                   <span class="stat-number" id="experienceYears">2+</span>
+                                   <span class="stat-label" id="experienceLabel">Years Experience</span>
                               </div>
                               <div class="stat-item">
                                    <span class="stat-number">10+</span>
@@ -240,13 +284,17 @@
           </div>
      </section>
 
+     <!-- ==================== EXPERIENCE SECTION ==================== -->
+     <!-- Professional work experience and career progression -->
      <section id="experience" class="experience">
           <h2>Experience</h2>
           <p class="experience-intro">My professional journey in <strong>software engineering</strong>, building
                scalable solutions and driving technological innovation.</p>
           <p class="experience-subtitle">From enterprise-grade platforms to collaborative team leadership, here's how
                I've contributed to meaningful digital transformation.</p>
+          <!-- Experience cards container -->
           <div class="exp-cards">
+               <!-- Current role at Reliablesoft with detailed responsibilities -->
                <div class="exp-card-modern">
                     <h3 style="color:var(--accent-dark); margin-bottom:8px;">Software Engineer</h3>
                     <p class="company-name"
@@ -255,6 +303,8 @@
                     <p class="duration" style="color:var(--accent-light); margin-bottom:16px; font-weight:500;">May 2025
                          - Present</p>
                     <hr style="border:0; border-top:1px solid var(--border-dark); margin:16px 0;">
+                    
+                    <!-- Key responsibilities and achievements -->
                     <ul class="experience-points"
                          style="margin:0 0 20px 0; padding-left:22px; font-size:1.05em; color:var(--neutral-text-dark); line-height:1.8;">
                          <li style="margin-bottom:12px;">Working on the <strong>backend development</strong> of
@@ -269,6 +319,8 @@
                          <li>Actively learning and implementing <strong>DevOps tools</strong> and best practices to
                               complement backend expertise and evolve into a comprehensive fullstack role.</li>
                     </ul>
+                    
+                    <!-- Technology tags used in this role -->
                     <div class="tags">
                          <span>NestJS</span><span>TypeScript</span><span>PostgreSQL</span><span>Microservices</span><span>TypeORM</span>
                     </div>
@@ -276,17 +328,25 @@
           </div>
      </section>
 
+     <!-- ==================== PROJECTS SECTION ==================== -->
+     <!-- Portfolio of completed projects with filtering and pagination -->
      <section id="projects" class="projects">
           <h2>Projects</h2>
+          
+          <!-- Project category filters -->
           <div class="project-tags">
                <button>All</button>
                <button>Frontend</button>
                <button>Backend</button>
                <button>Full Stack</button>
           </div>
+          
+          <!-- Projects grid - populated dynamically by JavaScript -->
           <div class="project-grid">
                <!-- Project cards will be rendered by JS -->
           </div>
+          
+          <!-- Pagination controls for project browsing -->
           <div class="pagination-controls" style="text-align:center; margin-top:32px;">
                <button id="prevPage" class="pagination-btn" disabled>Previous</button>
                <span id="pageIndicator" style="margin:0 18px; color:var(--accent-light); font-weight:500;">Page 1</span>
@@ -294,11 +354,14 @@
           </div>
      </section>
 
+     <!-- ==================== SKILLS SECTION ==================== -->
+     <!-- Technical skills showcase with animated horizontal scroller -->
      <section id="skills" class="skills">
           <h2>My Skills</h2>
           <p class="skills-intro">A comprehensive toolkit of modern technologies and methodologies that power my
                development journey</p>
 
+          <!-- Infinite horizontal scrolling animation for skill icons -->
           <div class="scroller" data-speed="slow">
                <ul class="tag-list scroller__inner">
                     <!-- Skill items will be generated dynamically by JavaScript -->
@@ -306,13 +369,18 @@
           </div>
      </section>
 
+     <!-- ==================== CONTACT SECTION ==================== -->
+     <!-- Contact form and social media links -->
      <section id="contact" class="contact">
           <h2>Get In Touch</h2>
           <p class="contact-intro">Ready to collaborate on something amazing? <strong>Let's build the future
                     together.</strong></p>
           <p class="contact-subtitle">Whether you have a project in mind, want to discuss opportunities, or just want to
                connect, I'd love to hear from you.</p>
+          
+          <!-- Contact form with animated floating labels -->
           <form class="contact-form">
+               <!-- Name input field with animated icon -->
                <div class="form-group">
                     <div class="input-icon">
                          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
@@ -323,6 +391,8 @@
                     <input type="text" id="name" name="name" required placeholder=" " autocomplete="off">
                     <label for="name">Name</label>
                </div>
+               
+               <!-- Email input field with animated icon -->
                <div class="form-group">
                     <div class="input-icon">
                          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
@@ -333,6 +403,8 @@
                     <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
                     <label for="email">Email</label>
                </div>
+               
+               <!-- Message textarea field with animated icon -->
                <div class="form-group">
                     <div class="input-icon">
                          <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
@@ -343,6 +415,8 @@
                     <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
                     <label for="message">Message</label>
                </div>
+               
+               <!-- Submit button with icon -->
                <button type="submit" class="contact-btn glass-btn">
                     <svg width="22" height="22" fill="none" viewBox="0 0 22 22"
                          style="vertical-align:middle;margin-right:8px;">
@@ -352,9 +426,10 @@
                     Send Message
                </button>
           </form>
-
      </section>
 
+     <!-- ==================== FOOTER SECTION ==================== -->
+     <!-- Footer with social links and copyright information -->
      <footer>
           <div class="footer-main">
                <div class="footer-content">
@@ -362,20 +437,36 @@
                          difference.</p>
                     <p class="footer-description">Passionate about creating digital experiences that combine beautiful
                          design with powerful functionality.</p>
+                    
+                    <!-- Social media links with hover effects -->
                     <div class="social-links" style="margin-top:32px;">
-                         <a href="#"><img src="linkedin.svg" alt="LinkedIn"></a>
-                         <a href="#"><img src="github.svg" alt="GitHub"></a>
-                         <a href="#"><img src="twitter.svg" alt="Twitter"></a>
-                         <a href="#"><img src="instagram.svg" alt="Instagram"></a>
+                         <a href="https://linkedin.com/in/nikhil-malviya" target="_blank" rel="noopener noreferrer">
+                              <img src="assets/images/footer-icon/linkedin.png" alt="LinkedIn"
+                                   title="Connect on LinkedIn">
+                         </a>
+                         <a href="https://github.com/malviyanikhil123" target="_blank" rel="noopener noreferrer">
+                              <img src="assets/images/footer-icon/GitHub.png" alt="GitHub" title="View GitHub Profile">
+                         </a>
+                         <a href="https://twitter.com/nikhilmalviya" target="_blank" rel="noopener noreferrer">
+                              <img src="assets/images/footer-icon/twitter.png" alt="Twitter" title="Follow on Twitter">
+                         </a>
+                         <a href="https://instagram.com/nikhilmalviya" target="_blank" rel="noopener noreferrer">
+                              <img src="assets/images/footer-icon/instagram.png" alt="Instagram"
+                                   title="Follow on Instagram">
+                         </a>
                     </div>
                </div>
           </div>
+          
+          <!-- Footer bottom with copyright -->
           <div class="footer-bottom">
                <p class="copyright">© 2024 <strong>Nikhil Malviya</strong>. Crafted with passion and precision. All
                     rights reserved.</p>
           </div>
      </footer>
 
+     <!-- ==================== JAVASCRIPT IMPORTS ==================== -->
+     <!-- Main functionality and external library scripts -->
      <script src="assets/js/script.js"></script>
      <script src="https://jsuites.net/v4/jsuites.js"></script>
 </body>
