@@ -49,21 +49,20 @@ header {
      backdrop-filter: blur(20px);
      -webkit-backdrop-filter: blur(20px);
      position: fixed;
-     top: 0;
-     left: 0;
-     right: 0;
+     top: 8px;
+     left: 8px;
+     right: 8px;
      z-index: 1000;
-     padding: 0px 0;
+     padding: 4px 20px;
+     border-radius: 12px;
      transition: var(--transition-smooth);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
 }
 
 header:hover {
      background: rgba(30, 41, 59, 0.95);
-}
-
-header img {
-     margin: -12px;
-     padding-right: 612px;
 }
 
 /* Enhanced navigation */
@@ -77,10 +76,10 @@ nav a {
      color: var(--neutral-text-dark);
      text-decoration: none;
      font-weight: 500;
-     font-size: 15px;
+     font-size: 13px;
      position: relative;
-     padding: 8px 16px;
-     border-radius: 8px;
+     padding: 4px 10px;
+     border-radius: 5px;
      transition: var(--transition-smooth);
 }
 
@@ -1578,7 +1577,7 @@ body {
      color: #fff;
      font-family: 'Inter', Arial, sans-serif;
      margin: 0;
-     padding-top: 90px;
+     padding-top: 50px;
      /* Prevent content under navbar */
 }
 
@@ -1594,23 +1593,7 @@ body {
      transform: none;
 }
 
-header {
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     margin-left: 30px;
-     margin-top: 30px;
-     background: rgba(35, 35, 42, 0.82);
-     backdrop-filter: blur(8px);
-     border-bottom: 1.5px solid #363646;
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 95vw;
-     z-index: 1000;
-     border-radius: 30px;
-     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 
 .navbar-hide {
      transform: translateY(-100%);
@@ -1626,22 +1609,30 @@ header {
      font-size: 1.5em;
      font-weight: bold;
      color: #6366f1;
-     margin-left: 20px;
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     transition: var(--transition-smooth);
 }
 
-nav a {
-     margin: 0 16px;
-     color: #fff;
-     text-decoration: none;
-     font-weight: 500;
-     font-size: 20px;
-     position: relative;
-     padding-top: 10px;
-     transition: color 0.2s;
+.logo:hover {
+     transform: scale(1.05);
 }
+
+.logo img {
+     height: 50px;
+     width: auto;
+     display: block;
+     margin: 0;
+     padding: 0;
+}
+
+
 
 nav {
-     margin-left: 200px;
+     display: flex;
+     gap: 8px;
+     align-items: center;
 }
 
 .nav-link.active {
