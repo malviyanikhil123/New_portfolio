@@ -63,12 +63,13 @@ header:hover {
 
 header img {
      margin: -12px;
+     padding-right: 612px;
 }
 
 /* Enhanced navigation */
 nav {
      display: flex;
-     gap: 32px;
+     gap: 8px;
      align-items: center;
 }
 
@@ -1367,7 +1368,7 @@ footer::after {
 
 /* From Uiverse.io by Galahhad */
 .theme-switch {
-     --toggle-size: 30px;
+     --toggle-size: 28px;
      /* the size is adjusted using font-size,
      this is not transform scale,
      so you can choose any size */
@@ -1595,7 +1596,7 @@ body {
 
 header {
      display: flex;
-     justify-content: space-between;
+     justify-content: space-around;
      align-items: center;
      margin-left: 30px;
      margin-top: 30px;
@@ -1660,7 +1661,7 @@ nav {
 }
 
 .resume-btn {
-     background: #6366f1;
+     background:linear-gradient(135deg, #5295b7 0%, #1f4358 100%); 
      color: #fff;
      border: none;
      padding: 8px 20px;
