@@ -1,51 +1,85 @@
 // --- Skills Data ---
 const skillsData = [
-     { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', title: 'React.js' },
-     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', title: 'TypeScript' },
-     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', title: 'JavaScript (ES6+)' },
-     { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', title: 'HTML & CSS3' },
-     { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg', title: 'Tailwind CSS' },
-     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', title: 'Node.js' },
-     { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', title: 'Python (Django, Flask)' },
-     { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', title: 'Express.js & REST APIs' },
-     { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg', title: 'GraphQL' },
-     { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', title: 'MongoDB & NoSQL' },
-     { name: 'NestJS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg', title: 'NestJS & Microservices' },
-     { name: 'AWS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg', title: 'AWS' },
-     { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', title: 'Docker' },
-     { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', title: 'Kubernetes' },
-     { name: 'CI/CD', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', title: 'CI/CD Pipelines' },
-     { name: 'Git & GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', title: 'Git & GitHub' },
-     { name: 'Jira', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg', title: 'Jira' },
-     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', title: 'PostgreSQL' },
-     { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', title: 'MySQL' },
-     { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', title: 'Redis' },
-     { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg', title: 'Frameworks' },
-     { name: 'Jest', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg', title: 'Unit & Integration Testing' },
-     { name: 'Webpack', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg', title: 'Webpack' },
-     { name: 'Vite', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg', title: 'Vite' },
-     { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', title: 'Figma' }
+     { name: 'React.js', icon: 'assets/images/skills-icon/React.png', title: 'React.js' },
+     { name: 'TypeScript', icon: 'assets/images/skills-icon/typescript.png', title: 'TypeScript' },
+     { name: 'JavaScript', icon: 'assets/images/skills-icon/java-script.png', title: 'JavaScript (ES6+)' },
+     { name: 'HTML5', icon: 'assets/images/skills-icon/HTML5.png', title: 'HTML & CSS3' },
+     { name: 'CSS3', icon: 'assets/images/skills-icon/CSS3.png', title: 'CSS3' },
+     { name: 'Tailwind CSS', icon: 'assets/images/skills-icon/Tailwind CSS.png', title: 'Tailwind CSS' },
+     { name: 'Node.js', icon: 'assets/images/skills-icon/Node.js.png', title: 'Node.js' },
+     { name: 'Python', icon: 'assets/images/skills-icon/python.png', title: 'Python (Django, Flask)' },
+     { name: 'Express.js', icon: 'assets/images/skills-icon/Express.png', title: 'Express.js & REST APIs' },
+     { name: 'NestJS', icon: 'assets/images/skills-icon/Nest.js.png', title: 'NestJS & Microservices' },
+     { name: 'GraphQL', icon: 'assets/images/skills-icon/GraphQL.png', title: 'GraphQL' },
+     { name: 'MongoDB', icon: 'assets/images/skills-icon/MongoDB.png', title: 'MongoDB & NoSQL' },
+     { name: 'PostgreSQL', icon: 'assets/images/skills-icon/PostgresSQL.png', title: 'PostgreSQL' },
+     { name: 'MySQL', icon: 'assets/images/skills-icon/MySQL.png', title: 'MySQL' },
+     { name: 'Redis', icon: 'assets/images/skills-icon/Redis.png', title: 'Redis' },
+     { name: 'AWS', icon: 'assets/images/skills-icon/AWS.png', title: 'AWS' },
+     { name: 'Azure', icon: 'assets/images/skills-icon/Azure.png', title: 'Azure' },
+     { name: 'Docker', icon: 'assets/images/skills-icon/Docker.png', title: 'Docker' },
+     { name: 'Kubernetes', icon: 'assets/images/skills-icon/Kubernetes.png', title: 'Kubernetes' },
+     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git' },
+     { name: 'GitHub', icon: 'assets/images/skills-icon/GitHub.png', title: 'GitHub' },
+     { name: 'Jenkins', icon: 'assets/images/skills-icon/Jenkins.png', title: 'Jenkins' },
+     { name: 'Terraform', icon: 'assets/images/skills-icon/HashiCorp Terraform.png', title: 'HashiCorp Terraform' },
+     { name: 'Ansible', icon: 'assets/images/skills-icon/Ansible.png', title: 'Ansible' },
+     { name: 'Jira', icon: 'assets/images/skills-icon/Jira.png', title: 'Jira' },
+     { name: 'Postman', icon: 'assets/images/skills-icon/Postman.png', title: 'Postman' },
+     { name: 'Vite', icon: 'assets/images/skills-icon/Vite.js.png', title: 'Vite' },
+     { name: 'Figma', icon: 'assets/images/skills-icon/Figma.png', title: 'Figma' },
+     { name: 'Redux', icon: 'assets/images/skills-icon/Redux.png', title: 'Redux' },
+     { name: 'Socket.io', icon: 'assets/images/skills-icon/Socket.io.png', title: 'Socket.io' },
+     { name: 'Apache Kafka', icon: 'assets/images/skills-icon/Apache Kafka.png', title: 'Apache Kafka' },
+     { name: 'NGINX', icon: 'assets/images/skills-icon/NGINX.png', title: 'NGINX' },
+     { name: 'Grafana', icon: 'assets/images/skills-icon/Grafana.png', title: 'Grafana' },
+     { name: 'Prometheus', icon: 'assets/images/skills-icon/Prometheus.png', title: 'Prometheus' },
+     { name: 'Linux', icon: 'assets/images/skills-icon/Linux.png', title: 'Linux' },
+     { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
 ];
 
 // Function to generate skill icons dynamically
 function generateSkillIcons() {
-     const skillsColumn = document.querySelector('.skills-column');
-     if (!skillsColumn) return;
+     const scrollerInner = document.querySelector('.scroller__inner');
+     if (!scrollerInner) return;
      
      // Clear existing content
-     skillsColumn.innerHTML = '';
+     scrollerInner.innerHTML = '';
      
-     // Create skills twice for seamless loop
-     const allSkills = [...skillsData, ...skillsData];
-     
-     allSkills.forEach((skill, index) => {
-          const skillIcon = document.createElement('div');
-          skillIcon.className = 'skill-icon';
-          skillIcon.innerHTML = `
+     // Create skills for scrolling animation
+     skillsData.forEach((skill, index) => {
+          const skillItem = document.createElement('li');
+          skillItem.innerHTML = `
                <img src="${skill.icon}" alt="${skill.name}" title="${skill.title}" />
           `;
-          skillsColumn.appendChild(skillIcon);
+          scrollerInner.appendChild(skillItem);
      });
+}
+
+// Scrolling animation logic
+function addScrollingAnimation() {
+     const scrollers = document.querySelectorAll(".scroller");
+
+     // If a user hasn't opted in for reduced motion, then we add the animation
+     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          scrollers.forEach((scroller) => {
+               // add data-animated="true" to every `.scroller` on the page
+               scroller.setAttribute("data-animated", true);
+
+               // Make an array from the elements within `.scroller-inner`
+               const scrollerInner = scroller.querySelector(".scroller__inner");
+               const scrollerContent = Array.from(scrollerInner.children);
+
+               // For each item in the array, clone it
+               // add aria-hidden to it
+               // add it into the `.scroller-inner`
+               scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+               });
+          });
+     }
 }
 
 // Highlight nav link based on current section
@@ -75,8 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
      window.addEventListener('scroll', highlightNav);
      highlightNav();
      
-     // Generate skill icons dynamically
+     // Generate skill icons dynamically and add scrolling animation
      generateSkillIcons();
+     addScrollingAnimation();
 });
 function downloadResume() {
      const link = document.createElement('a');
@@ -249,20 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
           
           card.addEventListener('mouseleave', () => {
                card.style.transform = 'translateY(0)';
-          });
-     });
-
-     // Enhanced skills icon animation
-     const skillIcons = document.querySelectorAll('.skills-icons li');
-     skillIcons.forEach((icon, index) => {
-          icon.style.animationDelay = `${index * 0.1}s`;
-          
-          icon.addEventListener('mouseenter', () => {
-               icon.style.transform = 'translateY(-6px) scale(1.1) rotate(5deg)';
-          });
-          
-          icon.addEventListener('mouseleave', () => {
-               icon.style.transform = 'translateY(0) scale(1) rotate(0deg)';
           });
      });
 

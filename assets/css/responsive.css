@@ -1,0 +1,309 @@
+/* =============================================================================
+   RESPONSIVE DESIGN STYLES
+   Portfolio Website - Mobile & Tablet Breakpoints
+   ============================================================================= */
+
+/* =============================================================================
+   TABLET & MEDIUM SCREENS (max-width: 900px)
+   ============================================================================= */
+@media (max-width: 900px) {
+     :root {
+          --section-padding: 60px 0;
+     }
+
+     .hero-content {
+          grid-template-columns: 1fr !important;
+          gap: 48px;
+          text-align: center;
+          flex-direction: column;
+     }
+
+     .hero-left h1 {
+          font-size: clamp(2rem, 8vw, 3rem) !important;
+     }
+
+     nav {
+          gap: 20px;
+     }
+
+     nav a {
+          font-size: 14px;
+          padding: 6px 12px;
+     }
+
+     .about-flex-card {
+          flex-direction: column;
+          align-items: center;
+          padding: 24px 12px;
+          gap: 24px;
+     }
+
+     .about-flex-svg {
+          margin-top: 18px;
+     }
+
+     .about-content {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          text-align: center;
+     }
+
+     .about-container {
+          padding: 32px 24px;
+     }
+
+     .about-stats {
+          flex-direction: row;
+          justify-content: space-around;
+     }
+
+     .stat-item {
+          flex: 1;
+          margin: 0 8px;
+          padding: 12px 8px;
+     }
+
+     .stat-number {
+          font-size: 1.5rem;
+     }
+
+     .stat-label {
+          font-size: 0.75rem;
+     }
+
+     .exp-cards,
+     .project-grid,
+     .skills-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+     }
+
+     .project-tags {
+          gap: 12px;
+          flex-wrap: wrap;
+     }
+
+     .project-tags button {
+          padding: 10px 20px;
+          font-size: 13px;
+     }
+
+     .exp-card-modern,
+     .project-card,
+     .contact-form {
+          padding: 24px;
+     }
+
+     header {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 18px 12px;
+     }
+
+     .logo img {
+          height: 80px !important;
+     }
+
+     .skills-carousel {
+          padding: 40px 0;
+     }
+
+     .skills-column {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          gap: 20px;
+          padding: 0 15px;
+     }
+
+     .skill-icon {
+          width: 100px;
+          height: 100px;
+          margin: 0 auto;
+     }
+
+     .skill-icon img {
+          width: 50px;
+          height: 50px;
+          object-fit: contain;
+     }
+}
+
+/* =============================================================================
+   MOBILE & SMALL SCREENS (max-width: 600px)
+   ============================================================================= */
+@media (max-width: 600px) {
+     :root {
+          --section-padding: 40px 0;
+     }
+
+     .experience,
+     .projects,
+     .skills,
+     .contact {
+          padding-left: 16px;
+          padding-right: 16px;
+     }
+
+     .hero-content {
+          padding: 0 16px;
+          gap: 32px;
+     }
+
+     .skills-icons {
+          justify-content: center;
+     }
+
+     .project-tags {
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+     }
+
+     .project-tags button {
+          width: 200px;
+     }
+
+     header {
+          padding: 12px;
+     }
+
+     footer {
+          padding: 18px 12px;
+     }
+
+     .experience {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+     }
+
+     .exp-cards {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          width: 100%;
+          gap: 0;
+     }
+
+     .exp-card-modern {
+          padding: 24px 12px;
+     }
+
+     .skills {
+          padding: 60px 0;
+     }
+
+     .skills-carousel {
+          padding: 30px 0;
+     }
+
+     .skills-column {
+          grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+          gap: 15px;
+          padding: 0 10px;
+     }
+
+     .skill-icon {
+          width: 85px;
+          height: 85px;
+          margin: 0 auto;
+     }
+
+     .skill-icon img {
+          width: 42px;
+          height: 42px;
+          object-fit: contain;
+     }
+
+     .contact-form {
+          padding: 32px 24px;
+     }
+
+     .form-group input,
+     .form-group textarea {
+          padding: 16px 20px 16px 50px;
+          font-size: 1rem;
+     }
+
+     .form-group label {
+          left: 50px;
+          font-size: 1rem;
+     }
+
+     .input-icon {
+          left: 18px;
+     }
+
+     .contact-btn {
+          padding: 18px 32px;
+          font-size: 1.05rem;
+     }
+
+     .social-links,
+     .footer-social {
+          gap: 16px;
+     }
+
+     .social-links a,
+     .footer-social a {
+          width: 48px;
+          height: 48px;
+     }
+
+     .social-links img,
+     .footer-social img {
+          width: 22px;
+          height: 22px;
+     }
+
+     .footer-main {
+          flex-direction: column;
+          gap: 32px;
+          text-align: center;
+          padding: 50px 0 40px;
+     }
+
+     .footer-content {
+          padding: 32px 24px;
+     }
+
+     .footer-tagline {
+          font-size: 1.2rem;
+     }
+
+     .footer-description {
+          font-size: 1rem;
+     }
+}
+
+/* =============================================================================
+   EXTRA SMALL SCREENS (max-width: 480px)
+   ============================================================================= */
+@media (max-width: 480px) {
+     .hero-left h1 {
+          font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+     }
+
+     .hero-content {
+          gap: 24px;
+     }
+
+     .skill-icon {
+          width: 75px;
+          height: 75px;
+     }
+
+     .skill-icon img {
+          width: 38px;
+          height: 38px;
+     }
+
+     .contact-form {
+          padding: 24px 20px;
+     }
+
+     .contact h2 {
+          font-size: clamp(2rem, 6vw, 2.8rem);
+     }
+}
