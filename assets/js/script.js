@@ -951,3 +951,33 @@ window.addEventListener('resize', () => {
  * Last Updated: 2025
  * ===============================================================================
  */
+
+// Initialize emailjs after the script is loaded 
+// Initialize emailjs after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+     emailjs.init("IwRDmExQb-1B38uIw"); // Your EmailJS public key
+ 
+     document.getElementById("contact-form").addEventListener("submit", function (event) {
+       event.preventDefault();
+ 
+       const fullname = document.getElementById("fullname").value;
+       const email = document.getElementById("email").value;
+       const message = document.getElementById("message").value;
+ 
+       emailjs.send("service_2tnsg7j", "template_fhwpxcn", {
+         fullname: fullname,
+         email: email,
+         message: message
+       }).then(
+         function (response) {
+           console.log("SUCCESS", response);
+           alert("Message sent successfully!");
+           document.getElementById("contact-form").reset();
+         },
+         function (error) {
+           console.error("FAILED", error);
+           alert("Failed to send message. Please try again.");
+         }
+       );
+     });
+   });
