@@ -16,6 +16,7 @@
  * 6. Resume Download & Notifications
  * 7. User Interface Interactions
  * 8. Theme Toggle System
+ * 9. Mobile Navigation Functionality
  * 
  * ===============================================================================
  */
@@ -864,6 +865,74 @@ function validateField(field) {
           }
      `;
      document.head.appendChild(style);
+});
+
+/*
+ * ========================================
+ * 9. MOBILE NAVIGATION FUNCTIONALITY
+ * ========================================
+ * Handles mobile navigation toggle, overlay display, and responsive behavior
+ * Provides smooth transitions and proper event handling for mobile devices
+ */
+
+// DOM elements for mobile navigation
+const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileNavClose = document.getElementById('mobile-nav-close');
+
+/**
+ * Toggles the mobile navigation overlay
+ * Shows/hides the mobile menu and manages body scroll
+ */
+function toggleMobileNav() {
+     if (mobileNav.classList.contains('active')) {
+          closeMobileNav();
+     } else {
+          mobileNav.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scroll
+     }
+}
+
+/**
+ * Closes the mobile navigation overlay
+ * Hides the mobile menu and restores body scroll
+ */
+function closeMobileNav() {
+     mobileNav.classList.remove('active');
+     document.body.style.overflow = ''; // Restore background scroll
+}
+
+// Event listeners for mobile navigation
+if (mobileNavToggle) {
+     mobileNavToggle.addEventListener('click', toggleMobileNav);
+}
+
+if (mobileNavClose) {
+     mobileNavClose.addEventListener('click', closeMobileNav);
+}
+
+// Close mobile nav when clicking on navigation links
+if (mobileNav) {
+     const mobileNavLinks = mobileNav.querySelectorAll('a');
+     mobileNavLinks.forEach(link => {
+          link.addEventListener('click', closeMobileNav);
+     });
+}
+
+// Close mobile nav when clicking outside the overlay
+document.addEventListener('click', (e) => {
+     if (mobileNav && mobileNav.classList.contains('active') && 
+         !mobileNav.contains(e.target) && 
+         !mobileNavToggle.contains(e.target)) {
+          closeMobileNav();
+     }
+});
+
+// Close mobile nav on window resize (when switching to desktop)
+window.addEventListener('resize', () => {
+     if (window.innerWidth > 600 && mobileNav.classList.contains('active')) {
+          closeMobileNav();
+     }
 });
 
 /*

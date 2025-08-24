@@ -4,6 +4,74 @@
    ============================================================================= */
 
 /* =============================================================================
+   BASE STYLES FOR ALL SCREEN SIZES
+   ============================================================================= */
+/* Mobile navigation elements - hidden by default on larger screens */
+.mobile-nav-toggle {
+     display: none;
+}
+
+.mobile-nav {
+     display: none;
+}
+
+/* =============================================================================
+   LARGE DESKTOP SCREENS (min-width: 1200px)
+   ============================================================================= */
+@media (min-width: 1200px) {
+     header {
+          padding: 2px 32px;
+          left: 32px;
+          right: 32px;
+     }
+
+     nav {
+          gap: 12px;
+          min-height: 80px;
+          padding: 12px 0;
+     }
+
+     nav a {
+          font-size: 14px;
+          padding: 8px 16px;
+     }
+
+     .logo img {
+          height: 120px;
+     }
+
+     .theme-switch {
+          transform: scale(1.1);
+     }
+}
+
+/* =============================================================================
+   DESKTOP SCREENS (max-width: 1199px)
+   ============================================================================= */
+@media (max-width: 1199px) {
+     header {
+          padding: 2px 24px;
+          left: 24px;
+          right: 24px;
+     }
+
+     nav {
+          gap: 10px;
+          min-height: 80px;
+          padding: 12px 0;
+     }
+
+     nav a {
+          font-size: 13px;
+          padding: 6px 12px;
+     }
+
+     .logo img {
+          height: 100px;
+     }
+}
+
+/* =============================================================================
    TABLET & MEDIUM SCREENS (max-width: 900px)
    ============================================================================= */
 @media (max-width: 900px) {
@@ -11,6 +79,39 @@
           --section-padding: 60px 0;
      }
 
+     /* Header adjustments for tablet */
+     header {
+          padding: 4px 20px;
+          left: 20px;
+          right: 20px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+     }
+
+     /* Logo adjustments */
+     .logo img {
+          height: 80px;
+     }
+
+     /* Navigation adjustments */
+     nav {
+          gap: 16px;
+          min-height: 70px;
+          padding: 10px 0;
+     }
+
+     nav a {
+          font-size: 13px;
+          padding: 6px 10px;
+     }
+
+     /* Theme switch adjustments */
+     .theme-switch {
+          transform: scale(0.9);
+     }
+
+     /* Hero content adjustments */
      .hero-content {
           grid-template-columns: 1fr !important;
           gap: 48px;
@@ -22,15 +123,7 @@
           font-size: clamp(2rem, 8vw, 3rem) !important;
      }
 
-     nav {
-          gap: 20px;
-     }
-
-     nav a {
-          font-size: 14px;
-          padding: 6px 12px;
-     }
-
+     /* Other content adjustments */
      .about-flex-card {
           flex-direction: column;
           align-items: center;
@@ -95,16 +188,6 @@
           padding: 24px;
      }
 
-     header {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 18px 12px;
-     }
-
-     .logo img {
-          height: 80px !important;
-     }
-
      .skills-carousel {
           padding: 40px 0;
      }
@@ -129,6 +212,77 @@
 }
 
 /* =============================================================================
+   SMALL TABLET SCREENS (max-width: 768px)
+   ============================================================================= */
+@media (max-width: 768px) {
+     /* Header adjustments for small tablet */
+     header {
+          padding: 3px 16px;
+          left: 16px;
+          right: 16px;
+     }
+
+     /* Logo adjustments */
+     .logo img {
+          height: 70px;
+     }
+
+     /* Navigation adjustments */
+     nav {
+          gap: 12px;
+          min-height: 65px;
+          padding: 8px 0;
+     }
+
+     nav a {
+          font-size: 12px;
+          padding: 5px 8px;
+     }
+
+     /* Theme switch adjustments */
+     .theme-switch {
+          transform: scale(0.8);
+     }
+
+     /* Hero content adjustments */
+     .hero-content {
+          gap: 40px;
+          padding: 0 20px;
+     }
+
+     .hero-left h1 {
+          font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+     }
+
+     /* Other content adjustments */
+     .about-container {
+          padding: 28px 20px;
+     }
+
+     .exp-card-modern,
+     .project-card,
+     .contact-form {
+          padding: 20px;
+     }
+
+     .skills-column {
+          grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+          gap: 18px;
+          padding: 0 12px;
+     }
+
+     .skill-icon {
+          width: 90px;
+          height: 90px;
+     }
+
+     .skill-icon img {
+          width: 45px;
+          height: 45px;
+     }
+}
+
+/* =============================================================================
    MOBILE & SMALL SCREENS (max-width: 600px)
    ============================================================================= */
 @media (max-width: 600px) {
@@ -136,6 +290,111 @@
           --section-padding: 40px 0;
      }
 
+     /* Header adjustments for mobile */
+     header {
+          padding: 2px 12px;
+          left: 12px;
+          right: 12px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+     }
+
+     /* Logo adjustments */
+     .logo img {
+          height: 60px;
+     }
+
+     /* Hide regular navigation on mobile */
+     nav {
+          display: none;
+     }
+
+     /* Show hamburger menu button */
+     .mobile-nav-toggle {
+          display: block;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          color: var(--neutral-text-dark);
+          font-size: 24px;
+          transition: var(--transition-smooth);
+          z-index: 1001;
+     }
+
+     .mobile-nav-toggle:hover {
+          color: var(--accent-light);
+          transform: scale(1.1);
+     }
+
+     /* Mobile navigation overlay */
+     .mobile-nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 10, 10, 0.95);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 32px;
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+     }
+
+     .mobile-nav.active {
+          opacity: 1;
+          visibility: visible;
+     }
+
+     .mobile-nav a {
+          color: var(--neutral-text-dark);
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 18px;
+          padding: 16px 24px;
+          border-radius: 8px;
+          transition: var(--transition-smooth);
+          position: relative;
+     }
+
+     .mobile-nav a:hover {
+          color: var(--accent-light);
+          background: rgba(182, 176, 159, 0.15);
+          transform: translateY(-2px);
+     }
+
+     .mobile-nav-close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: none;
+          border: none;
+          color: var(--neutral-text-dark);
+          font-size: 32px;
+          cursor: pointer;
+          padding: 8px;
+          transition: var(--transition-smooth);
+     }
+
+     .mobile-nav-close:hover {
+          color: var(--accent-light);
+          transform: scale(1.1);
+     }
+
+     /* Theme switch adjustments */
+     .theme-switch {
+          transform: scale(0.75);
+     }
+
+     /* Content adjustments */
      .experience,
      .projects,
      .skills,
@@ -161,10 +420,6 @@
 
      .project-tags button {
           width: 200px;
-     }
-
-     header {
-          padding: 12px;
      }
 
      footer {
@@ -281,6 +536,40 @@
    EXTRA SMALL SCREENS (max-width: 480px)
    ============================================================================= */
 @media (max-width: 480px) {
+     /* Header adjustments for extra small screens */
+     header {
+          padding: 1px 8px;
+          left: 8px;
+          right: 8px;
+     }
+
+     /* Logo adjustments */
+     .logo img {
+          height: 50px;
+     }
+
+     /* Mobile navigation adjustments */
+     .mobile-nav {
+          gap: 24px;
+     }
+
+     .mobile-nav a {
+          font-size: 16px;
+          padding: 14px 20px;
+     }
+
+     .mobile-nav-close {
+          top: 16px;
+          right: 16px;
+          font-size: 28px;
+     }
+
+     /* Theme switch adjustments */
+     .theme-switch {
+          transform: scale(0.7);
+     }
+
+     /* Content adjustments */
      .hero-left h1 {
           font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
      }
@@ -305,5 +594,79 @@
 
      .contact h2 {
           font-size: clamp(2rem, 6vw, 2.8rem);
+     }
+}
+
+/* =============================================================================
+   LANDSCAPE ORIENTATION (max-height: 500px)
+   ============================================================================= */
+@media (max-height: 500px) and (orientation: landscape) {
+     /* Header adjustments for landscape */
+     header {
+          padding: 1px 16px;
+          top: 20px;
+     }
+
+     /* Logo adjustments */
+     .logo img {
+          height: 50px;
+     }
+
+     /* Navigation adjustments */
+     nav {
+          min-height: 50px;
+          padding: 6px 0;
+     }
+
+     nav a {
+          font-size: 12px;
+          padding: 4px 8px;
+     }
+
+     /* Mobile navigation adjustments */
+     .mobile-nav {
+          gap: 20px;
+     }
+
+     .mobile-nav a {
+          font-size: 14px;
+          padding: 10px 16px;
+     }
+
+     /* Theme switch adjustments */
+     .theme-switch {
+          transform: scale(0.7);
+     }
+}
+
+/* =============================================================================
+   HIGH DPI SCREENS (min-resolution: 2dppx)
+   ============================================================================= */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+     /* Ensure crisp rendering on high DPI displays */
+     .logo img {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+     }
+}
+
+/* =============================================================================
+   REDUCED MOTION PREFERENCES
+   ============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+     /* Disable animations for users who prefer reduced motion */
+     header,
+     nav,
+     .mobile-nav,
+     .theme-switch,
+     .logo {
+          transition: none !important;
+          animation: none !important;
+     }
+
+     .mobile-nav-toggle:hover,
+     .mobile-nav a:hover,
+     .mobile-nav-close:hover {
+          transform: none !important;
      }
 }
