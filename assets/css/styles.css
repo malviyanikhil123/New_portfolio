@@ -130,7 +130,8 @@ header {
      left: 28px;
      right: 28px;
      z-index: 1000;
-     padding: 4px 20px;
+     height: 90px;
+     padding: 1px 20px;
      border-radius: 52px;
      transition: var(--transition-smooth);
      display: flex;
@@ -177,6 +178,8 @@ nav {
      display: flex;
      gap: 8px;
      align-items: center;
+     min-height: 80px;
+     padding: 12px 0;
 }
 
 /* Navigation links with smooth interactions */
@@ -222,6 +225,53 @@ nav a:hover {
 .navbar-show {
      transform: translateY(0);
      opacity: 1;
+}
+
+/* =============================================================================
+   MOBILE NAVIGATION BASE STYLES
+   ============================================================================= */
+/* Mobile navigation toggle button - base styles */
+.mobile-nav-toggle {
+     display: none;
+     background: none;
+     border: none;
+     cursor: pointer;
+     padding: 8px;
+     color: var(--neutral-text-dark);
+     font-size: 24px;
+     transition: var(--transition-smooth);
+     z-index: 1001;
+}
+
+/* Mobile navigation overlay - base styles */
+.mobile-nav {
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100vh;
+     background: rgba(10, 10, 10, 0.95);
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px);
+     z-index: 1000;
+     opacity: 0;
+     visibility: hidden;
+     transition: all 0.3s ease;
+}
+
+/* Mobile navigation close button - base styles */
+.mobile-nav-close {
+     position: absolute;
+     top: 20px;
+     right: 20px;
+     background: none;
+     border: none;
+     color: var(--neutral-text-dark);
+     font-size: 32px;
+     cursor: pointer;
+     padding: 8px;
+     transition: var(--transition-smooth);
 }
 
 /* =============================================================================
