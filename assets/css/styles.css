@@ -187,7 +187,7 @@ nav a {
      color: var(--neutral-text-dark);
      text-decoration: none;
      font-weight: 500;
-     font-size: 13px;
+     font-size: 18px; /* Updated to 18px as requested */
      position: relative;
      padding: 4px 10px;
      border-radius: 5px;
