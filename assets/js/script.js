@@ -370,7 +370,7 @@ function downloadResume() {
 
      // Show notification with delay to feel more natural and allow download to start
      setTimeout(() => {
-          showNotification("Resume downloaded successfully!");
+          showNotification("📄 Resume downloaded successfully!", "success");
      }, 1500); // 1500ms delay for better UX
 }
 
@@ -383,20 +383,32 @@ function downloadResume() {
  */
 
 /**
- * Displays temporary notification message to user
+ * Displays temporary notification message to user with different types
  * Creates styled notification element with automatic removal
  * Provides visual feedback for user actions and system status
+ * @param {string} message - The message to display
+ * @param {string} type - The type of notification: 'success', 'error', 'info', 'warning'
  */
-function showNotification(message) {
+function showNotification(message, type = 'info') {
      // Get notification element and update content
      const notif = document.getElementById("notification");
      notif.innerText = message;
+     
+     // Remove any existing type classes
+     notif.classList.remove('success', 'error', 'info', 'warning');
+     
+     // Add the appropriate type class
+     notif.classList.add(type);
      notif.classList.add("show"); // Show notification with CSS animation
 
-     // Automatically hide notification after 3 seconds
+     // Automatically hide notification after 4 seconds for better readability
      setTimeout(() => {
           notif.classList.remove("show");
-     }, 3000);
+          // Remove type class after animation completes
+          setTimeout(() => {
+               notif.classList.remove(type);
+          }, 300);
+     }, 4000);
 }
 
 /*
@@ -626,11 +638,10 @@ document.addEventListener('DOMContentLoaded', () => {
  * Provides smooth theme transitions and local storage integration
  */
 
-/**
- * Theme management system with localStorage persistence
- * Handles theme switching between dark and light modes
- * Maintains user preference across browser sessions
- */
+// Theme management system with localStorage persistence
+// Handles theme switching between dark and light modes
+// Maintains user preference across browser sessions
+
 // Get theme toggle element
 const themeToggle = document.getElementById('theme-toggle');
 
@@ -644,10 +655,16 @@ let isDark = localStorage.getItem('theme') !== 'light';
 function setTheme(dark) {
      if (dark) {
           document.body.classList.remove('light-mode');
-          themeToggle.checked = true;
+          if (themeToggle) themeToggle.checked = true;
      } else {
           document.body.classList.add('light-mode');
-          themeToggle.checked = false;
+          if (themeToggle) themeToggle.checked = false;
+     }
+     
+     // Also update mobile theme toggle if it exists
+     const mobileToggle = document.getElementById('mobile-theme-toggle');
+     if (mobileToggle) {
+          mobileToggle.checked = themeToggle ? themeToggle.checked : !dark;
      }
 }
 
@@ -655,17 +672,25 @@ function setTheme(dark) {
 setTheme(isDark);
 
 // Theme toggle event listener with localStorage persistence
-themeToggle.addEventListener('change', () => {
-     if (themeToggle.checked) {
-          // Switch to dark mode
-          document.body.classList.remove('light-mode');
-          localStorage.setItem('theme', 'dark');
-     } else {
-          // Switch to light mode
-          document.body.classList.add('light-mode');
-          localStorage.setItem('theme', 'light');
-     }
-});
+if (themeToggle) {
+     themeToggle.addEventListener('change', () => {
+          if (themeToggle.checked) {
+               // Switch to dark mode
+               document.body.classList.remove('light-mode');
+               localStorage.setItem('theme', 'dark');
+          } else {
+               // Switch to light mode
+               document.body.classList.add('light-mode');
+               localStorage.setItem('theme', 'light');
+          }
+          
+          // Sync mobile theme toggle
+          const mobileToggle = document.getElementById('mobile-theme-toggle');
+          if (mobileToggle) {
+               mobileToggle.checked = themeToggle.checked;
+          }
+     });
+}
 
 /*
  * ========================================
@@ -878,7 +903,7 @@ function validateField(field) {
 // DOM elements for mobile navigation
 const mobileNavToggle = document.getElementById('mobile-nav-toggle');
 const mobileNav = document.getElementById('mobile-nav');
-const mobileNavClose = document.getElementById('mobile-nav-close');
+const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
 /**
  * Toggles the mobile navigation overlay
@@ -889,6 +914,7 @@ function toggleMobileNav() {
           closeMobileNav();
      } else {
           mobileNav.classList.add('active');
+          mobileNavToggle.classList.add('active');
           document.body.style.overflow = 'hidden'; // Prevent background scroll
      }
 }
@@ -899,6 +925,7 @@ function toggleMobileNav() {
  */
 function closeMobileNav() {
      mobileNav.classList.remove('active');
+     mobileNavToggle.classList.remove('active');
      document.body.style.overflow = ''; // Restore background scroll
 }
 
@@ -907,15 +934,28 @@ if (mobileNavToggle) {
      mobileNavToggle.addEventListener('click', toggleMobileNav);
 }
 
-if (mobileNavClose) {
-     mobileNavClose.addEventListener('click', closeMobileNav);
-}
-
 // Close mobile nav when clicking on navigation links
 if (mobileNav) {
      const mobileNavLinks = mobileNav.querySelectorAll('a');
      mobileNavLinks.forEach(link => {
           link.addEventListener('click', closeMobileNav);
+     });
+}
+
+// Synchronize theme toggles
+if (mobileThemeToggle && themeToggle) {
+     // Set initial state for mobile theme toggle
+     mobileThemeToggle.checked = themeToggle.checked;
+     
+     // Sync mobile theme toggle with main theme toggle
+     mobileThemeToggle.addEventListener('change', () => {
+          themeToggle.checked = mobileThemeToggle.checked;
+          themeToggle.dispatchEvent(new Event('change'));
+     });
+
+     // Sync main theme toggle with mobile theme toggle
+     themeToggle.addEventListener('change', () => {
+          mobileThemeToggle.checked = themeToggle.checked;
      });
 }
 
@@ -959,6 +999,9 @@ document.addEventListener("DOMContentLoaded", function () {
  
      document.getElementById("contact-form").addEventListener("submit", function (event) {
        event.preventDefault();
+       
+       // Show loading notification
+       showNotification("📧 Sending your message...", "info");
  
        const fullname = document.getElementById("fullname").value;
        const email = document.getElementById("email").value;
@@ -971,13 +1014,22 @@ document.addEventListener("DOMContentLoaded", function () {
        }).then(
          function (response) {
            console.log("SUCCESS", response);
-           alert("Message sent successfully!");
+           showNotification("🎉 Message sent successfully! I'll get back to you soon.", "success");
            document.getElementById("contact-form").reset();
          },
          function (error) {
            console.error("FAILED", error);
-           alert("Failed to send message. Please try again.");
+           showNotification("❌ Failed to send message. Please try again or contact me directly.", "error");
          }
        );
      });
+     
+     // Ensure theme toggles are properly synchronized after DOM is loaded
+     const themeToggle = document.getElementById('theme-toggle');
+     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+     
+     if (themeToggle && mobileThemeToggle) {
+          // Re-sync mobile theme toggle state
+          mobileThemeToggle.checked = themeToggle.checked;
+     }
    });
