@@ -83,7 +83,7 @@ const skillsData = [
      { name: 'Prometheus', icon: 'assets/images/skills-icon/Prometheus.png', title: 'Prometheus' },
 
      // Development Tools & Others
-     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git' },
+     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git'},
      { name: 'GitHub', icon: 'assets/images/skills-icon/GitHub.png', title: 'GitHub' },
      { name: 'Jira', icon: 'assets/images/skills-icon/Jira.png', title: 'Jira' },
      { name: 'Postman', icon: 'assets/images/skills-icon/Postman.png', title: 'Postman' },
@@ -91,7 +91,6 @@ const skillsData = [
      { name: 'Linux', icon: 'assets/images/skills-icon/Linux.png', title: 'Linux' },
      { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
 ];
-
 /*
  * ========================================
  * 2. SCROLL TRACKING FUNCTIONALITY
@@ -135,15 +134,21 @@ function generateSkillIcons() {
      const scrollerInner = document.querySelector('.scroller__inner');
      if (!scrollerInner) return;
 
-     // Clear existing content
      scrollerInner.innerHTML = '';
 
-     // Create skills for scrolling animation
-     skillsData.forEach((skill, index) => {
+     skillsData.forEach((skill) => {
           const skillItem = document.createElement('li');
-          skillItem.innerHTML = `
-               <img src="${skill.icon}" alt="${skill.name}" title="${skill.title}" />
-          `;
+          const img = document.createElement('img');
+          img.src = skill.icon;
+          img.alt = skill.name;
+          img.title = skill.title;
+
+          // 👉 Sirf GitHub, Apache Kafka, aur Express.js ke liye invert apply karo
+          if (skill.name === "GitHub" || skill.name==="Apache Kafka" || skill.name==="Express.js") {
+               img.style.filter = "invert(1) hue-rotate(180deg)";
+          }
+
+          skillItem.appendChild(img);
           scrollerInner.appendChild(skillItem);
      });
 }
