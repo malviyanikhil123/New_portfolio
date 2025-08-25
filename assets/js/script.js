@@ -54,7 +54,7 @@ const skillsData = [
      { name: 'Tailwind CSS', icon: 'assets/images/skills-icon/Tailwind CSS.png', title: 'Tailwind CSS' },
      { name: 'Redux', icon: 'assets/images/skills-icon/Redux.png', title: 'Redux' },
      { name: 'Vite', icon: 'assets/images/skills-icon/Vite.js.png', title: 'Vite' },
-     
+
      // Backend Technologies
      { name: 'Node.js', icon: 'assets/images/skills-icon/Node.js.png', title: 'Node.js' },
      { name: 'Express.js', icon: 'assets/images/skills-icon/Express.png', title: 'Express.js & REST APIs' },
@@ -62,13 +62,13 @@ const skillsData = [
      { name: 'Python', icon: 'assets/images/skills-icon/python.png', title: 'Python' },
      { name: 'GraphQL', icon: 'assets/images/skills-icon/GraphQL.png', title: 'GraphQL' },
      { name: 'Socket.io', icon: 'assets/images/skills-icon/Socket.io.png', title: 'Socket.io' },
-     
+
      // Databases
      { name: 'MongoDB', icon: 'assets/images/skills-icon/MongoDB.png', title: 'MongoDB & NoSQL' },
      { name: 'PostgreSQL', icon: 'assets/images/skills-icon/PostgresSQL.png', title: 'PostgreSQL' },
      { name: 'MySQL', icon: 'assets/images/skills-icon/MySQL.png', title: 'MySQL' },
      { name: 'Redis', icon: 'assets/images/skills-icon/Redis.png', title: 'Redis' },
-     
+
      // Cloud & DevOps
      { name: 'AWS', icon: 'assets/images/skills-icon/AWS.png', title: 'AWS' },
      { name: 'Azure', icon: 'assets/images/skills-icon/Azure.png', title: 'Azure' },
@@ -81,17 +81,16 @@ const skillsData = [
      { name: 'NGINX', icon: 'assets/images/skills-icon/NGINX.png', title: 'NGINX' },
      { name: 'Grafana', icon: 'assets/images/skills-icon/Grafana.png', title: 'Grafana' },
      { name: 'Prometheus', icon: 'assets/images/skills-icon/Prometheus.png', title: 'Prometheus' },
-     
+
      // Development Tools & Others
-     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git' },
+     { name: 'Git', icon: 'assets/images/skills-icon/Git.png', title: 'Git'},
      { name: 'GitHub', icon: 'assets/images/skills-icon/GitHub.png', title: 'GitHub' },
      { name: 'Jira', icon: 'assets/images/skills-icon/Jira.png', title: 'Jira' },
      { name: 'Postman', icon: 'assets/images/skills-icon/Postman.png', title: 'Postman' },
      { name: 'Figma', icon: 'assets/images/skills-icon/Figma.png', title: 'Figma' },
      { name: 'Linux', icon: 'assets/images/skills-icon/Linux.png', title: 'Linux' },
-          { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
- ];
-
+     { name: 'Ubuntu', icon: 'assets/images/skills-icon/Ubuntu.png', title: 'Ubuntu' }
+];
 /*
  * ========================================
  * 2. SCROLL TRACKING FUNCTIONALITY
@@ -110,7 +109,7 @@ function updateProgressBar() {
      const scrollTop = window.pageYOffset;
      const docHeight = document.body.scrollHeight - window.innerHeight;
      const scrollPercent = (scrollTop / docHeight) * 100;
-     
+
      // Update progress bar width with smooth transition
      const progressBar = document.querySelector('.progress-bar');
      if (progressBar) {
@@ -135,15 +134,21 @@ function generateSkillIcons() {
      const scrollerInner = document.querySelector('.scroller__inner');
      if (!scrollerInner) return;
 
-     // Clear existing content
      scrollerInner.innerHTML = '';
 
-     // Create skills for scrolling animation
-     skillsData.forEach((skill, index) => {
+     skillsData.forEach((skill) => {
           const skillItem = document.createElement('li');
-          skillItem.innerHTML = `
-               <img src="${skill.icon}" alt="${skill.name}" title="${skill.title}" />
-          `;
+          const img = document.createElement('img');
+          img.src = skill.icon;
+          img.alt = skill.name;
+          img.title = skill.title;
+
+          // 👉 Sirf GitHub, Apache Kafka, aur Express.js ke liye invert apply karo
+          if (skill.name === "GitHub" || skill.name==="Apache Kafka" || skill.name==="Express.js") {
+               img.style.filter = "invert(1) hue-rotate(180deg)";
+          }
+
+          skillItem.appendChild(img);
           scrollerInner.appendChild(skillItem);
      });
 }
@@ -282,25 +287,25 @@ document.addEventListener('DOMContentLoaded', function () {
      // Progress Bar Functionality - Get reference to progress indicator
      const progressBar = document.getElementById('scrollProgress');
 
-/*
- * ========================================
- * SCROLL TRACKING FUNCTIONALITY
- * ========================================
- * Implements a visual progress indicator that tracks user scroll position
- * and provides smooth visual feedback at the top of the page
- */
+     /*
+      * ========================================
+      * SCROLL TRACKING FUNCTIONALITY
+      * ========================================
+      * Implements a visual progress indicator that tracks user scroll position
+      * and provides smooth visual feedback at the top of the page
+      */
 
-/**
- * Updates the scroll progress bar based on current scroll position
- * Creates a visual indicator showing percentage of page scrolled
- * Uses smooth animation and backdrop blur effects for modern appearance
- */
- /**
-  * Updates scroll progress bar based on current scroll position  
-  * Calculates percentage of page scrolled and updates visual indicator
-  * Uses cross-browser compatible scroll measurement approach
-  */
- function updateProgressBar() {
+     /**
+      * Updates the scroll progress bar based on current scroll position
+      * Creates a visual indicator showing percentage of page scrolled
+      * Uses smooth animation and backdrop blur effects for modern appearance
+      */
+     /**
+      * Updates scroll progress bar based on current scroll position  
+      * Calculates percentage of page scrolled and updates visual indicator
+      * Uses cross-browser compatible scroll measurement approach
+      */
+     function updateProgressBar() {
           const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
           const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
           const scrolled = (winScroll / height) * 100;
@@ -393,10 +398,10 @@ function showNotification(message, type = 'info') {
      // Get notification element and update content
      const notif = document.getElementById("notification");
      notif.innerText = message;
-     
+
      // Remove any existing type classes
      notif.classList.remove('success', 'error', 'info', 'warning');
-     
+
      // Add the appropriate type class
      notif.classList.add(type);
      notif.classList.add("show"); // Show notification with CSS animation
@@ -477,12 +482,12 @@ let filteredProjects = projects;  // Currently filtered project list
 function renderProjects() {
      const grid = document.querySelector('.project-grid');
      grid.innerHTML = ''; // Clear existing project cards
-     
+
      // Calculate pagination boundaries
      const start = (currentPage - 1) * projectsPerPage;
      const end = start + projectsPerPage;
      const pageProjects = filteredProjects.slice(start, end);
-     
+
      // Generate project cards for current page
      pageProjects.forEach(project => {
           const card = document.createElement('div');
@@ -494,7 +499,7 @@ function renderProjects() {
     `;
           grid.appendChild(card);
      });
-     
+
      // Update pagination controls and indicators
      document.getElementById('pageIndicator').textContent = `Page ${currentPage}`;
      document.getElementById('prevPage').disabled = currentPage === 1;
@@ -630,160 +635,160 @@ document.addEventListener('DOMContentLoaded', () => {
           });
      });
 
-/*
- * ========================================
- * 9. THEME TOGGLE SYSTEM
- * ========================================
- * Manages dark/light mode switching with persistent user preference
- * Provides smooth theme transitions and local storage integration
- */
+     /*
+      * ========================================
+      * 9. THEME TOGGLE SYSTEM
+      * ========================================
+      * Manages dark/light mode switching with persistent user preference
+      * Provides smooth theme transitions and local storage integration
+      */
 
-// Theme management system with localStorage persistence
-// Handles theme switching between dark and light modes
-// Maintains user preference across browser sessions
+     // Theme management system with localStorage persistence
+     // Handles theme switching between dark and light modes
+     // Maintains user preference across browser sessions
 
-// Get theme toggle element
-const themeToggle = document.getElementById('theme-toggle');
+     // Get theme toggle element
+     const themeToggle = document.getElementById('theme-toggle');
 
-// Check localStorage for saved theme preference (default is dark mode)
-let isDark = localStorage.getItem('theme') !== 'light';
+     // Check localStorage for saved theme preference (default is dark mode)
+     let isDark = localStorage.getItem('theme') !== 'light';
 
-/**
- * Sets the theme mode and updates UI elements accordingly
- * @param {boolean} dark - Whether to use dark mode (true) or light mode (false)
- */
-function setTheme(dark) {
-     if (dark) {
-          document.body.classList.remove('light-mode');
-          if (themeToggle) themeToggle.checked = true;
-     } else {
-          document.body.classList.add('light-mode');
-          if (themeToggle) themeToggle.checked = false;
-     }
-     
-     // Also update mobile theme toggle if it exists
-     const mobileToggle = document.getElementById('mobile-theme-toggle');
-     if (mobileToggle) {
-          mobileToggle.checked = themeToggle ? themeToggle.checked : !dark;
-     }
-}
-
-// Initialize theme based on saved preference
-setTheme(isDark);
-
-// Theme toggle event listener with localStorage persistence
-if (themeToggle) {
-     themeToggle.addEventListener('change', () => {
-          if (themeToggle.checked) {
-               // Switch to dark mode
+     /**
+      * Sets the theme mode and updates UI elements accordingly
+      * @param {boolean} dark - Whether to use dark mode (true) or light mode (false)
+      */
+     function setTheme(dark) {
+          if (dark) {
                document.body.classList.remove('light-mode');
-               localStorage.setItem('theme', 'dark');
+               if (themeToggle) themeToggle.checked = true;
           } else {
-               // Switch to light mode
                document.body.classList.add('light-mode');
-               localStorage.setItem('theme', 'light');
+               if (themeToggle) themeToggle.checked = false;
           }
-          
-          // Sync mobile theme toggle
+
+          // Also update mobile theme toggle if it exists
           const mobileToggle = document.getElementById('mobile-theme-toggle');
           if (mobileToggle) {
-               mobileToggle.checked = themeToggle.checked;
+               mobileToggle.checked = themeToggle ? themeToggle.checked : !dark;
           }
-     });
-}
+     }
 
-/*
- * ========================================
- * 10. SCROLL ANIMATION SYSTEM
- * ========================================
- * Manages scroll-triggered animations and visual effects
- * Creates engaging user experience with smooth section reveals
- */
+     // Initialize theme based on saved preference
+     setTheme(isDark);
 
-/**
- * Handles scroll-triggered animations for sections
- * Adds/removes visibility classes based on scroll position
- * Creates smooth reveal effects as user scrolls through content
- */
-function onScrollAnimate() {
-     animatedSections.forEach(section => {
-          const rect = section.getBoundingClientRect();
-          // Trigger animation when section is 50px from bottom of viewport
-          if (rect.top < window.innerHeight - 50) {
-               section.classList.add('visible');
+     // Theme toggle event listener with localStorage persistence
+     if (themeToggle) {
+          themeToggle.addEventListener('change', () => {
+               if (themeToggle.checked) {
+                    // Switch to dark mode
+                    document.body.classList.remove('light-mode');
+                    localStorage.setItem('theme', 'dark');
+               } else {
+                    // Switch to light mode
+                    document.body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+               }
+
+               // Sync mobile theme toggle
+               const mobileToggle = document.getElementById('mobile-theme-toggle');
+               if (mobileToggle) {
+                    mobileToggle.checked = themeToggle.checked;
+               }
+          });
+     }
+
+     /*
+      * ========================================
+      * 10. SCROLL ANIMATION SYSTEM
+      * ========================================
+      * Manages scroll-triggered animations and visual effects
+      * Creates engaging user experience with smooth section reveals
+      */
+
+     /**
+      * Handles scroll-triggered animations for sections
+      * Adds/removes visibility classes based on scroll position
+      * Creates smooth reveal effects as user scrolls through content
+      */
+     function onScrollAnimate() {
+          animatedSections.forEach(section => {
+               const rect = section.getBoundingClientRect();
+               // Trigger animation when section is 50px from bottom of viewport
+               if (rect.top < window.innerHeight - 50) {
+                    section.classList.add('visible');
+               } else {
+                    section.classList.remove('visible');
+               }
+          });
+     }
+
+     // Attach scroll animation handler and run initial check
+     window.addEventListener('scroll', onScrollAnimate);
+     onScrollAnimate(); // Initial check for sections already in view
+
+     /*
+      * ========================================
+      * 11. NAVBAR SHOW/HIDE FUNCTIONALITY
+      * ========================================
+      * Implements smart navbar behavior based on scroll direction
+      * Hides navbar on scroll down, shows on scroll up for better UX
+      */
+
+     /**
+      * Smart navbar visibility control based on scroll direction
+      * Enhances user experience by hiding navigation when scrolling down
+      * and showing it when scrolling up for easy access
+      */
+     const header = document.querySelector('header');
+     let lastScrollY = window.scrollY;
+     let ticking = false;
+
+     /**
+      * Handles navbar visibility based on scroll direction
+      * Uses requestAnimationFrame for smooth performance
+      */
+     function handleNavbar() {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 60) {
+               // Scrolling down - hide navbar
+               header.classList.remove('navbar-show');
+               header.classList.add('navbar-hide');
           } else {
-               section.classList.remove('visible');
+               // Scrolling up - show navbar
+               header.classList.remove('navbar-hide');
+               header.classList.add('navbar-show');
           }
-     });
-}
-
-// Attach scroll animation handler and run initial check
-window.addEventListener('scroll', onScrollAnimate);
-onScrollAnimate(); // Initial check for sections already in view
-
-/*
- * ========================================
- * 11. NAVBAR SHOW/HIDE FUNCTIONALITY
- * ========================================
- * Implements smart navbar behavior based on scroll direction
- * Hides navbar on scroll down, shows on scroll up for better UX
- */
-
-/**
- * Smart navbar visibility control based on scroll direction
- * Enhances user experience by hiding navigation when scrolling down
- * and showing it when scrolling up for easy access
- */
-const header = document.querySelector('header');
-let lastScrollY = window.scrollY;
-let ticking = false;
-
-/**
- * Handles navbar visibility based on scroll direction
- * Uses requestAnimationFrame for smooth performance
- */
-function handleNavbar() {
-     const currentScrollY = window.scrollY;
-     if (currentScrollY > lastScrollY && currentScrollY > 60) {
-          // Scrolling down - hide navbar
-          header.classList.remove('navbar-show');
-          header.classList.add('navbar-hide');
-     } else {
-          // Scrolling up - show navbar
-          header.classList.remove('navbar-hide');
-          header.classList.add('navbar-show');
+          lastScrollY = currentScrollY;
+          ticking = false;
      }
-     lastScrollY = currentScrollY;
-     ticking = false;
-}
 
-/**
- * Optimized scroll handler using requestAnimationFrame
- * Prevents excessive function calls during scroll events
- */
-function onScroll() {
-     if (!ticking) {
-          window.requestAnimationFrame(handleNavbar);
-          ticking = true;
+     /**
+      * Optimized scroll handler using requestAnimationFrame
+      * Prevents excessive function calls during scroll events
+      */
+     function onScroll() {
+          if (!ticking) {
+               window.requestAnimationFrame(handleNavbar);
+               ticking = true;
+          }
      }
-}
 
-// Attach scroll handler and ensure navbar is visible on load
-window.addEventListener('scroll', onScroll);
-header.classList.add('navbar-show'); // Always show navbar on page load
+     // Attach scroll handler and ensure navbar is visible on load
+     window.addEventListener('scroll', onScroll);
+     header.classList.add('navbar-show'); // Always show navbar on page load
 
-/*
- * ========================================
- * 12. CONTACT FORM ENHANCEMENT
- * ========================================
- * Enhanced contact form with validation, loading states, and user feedback
- * Provides smooth form submission experience with visual indicators
- */
+     /*
+      * ========================================
+      * 12. CONTACT FORM ENHANCEMENT
+      * ========================================
+      * Enhanced contact form with validation, loading states, and user feedback
+      * Provides smooth form submission experience with visual indicators
+      */
 
-/**
- * Enhanced contact form functionality with validation and feedback
- * Includes loading states, success indicators, and field validation
- */
+     /**
+      * Enhanced contact form functionality with validation and feedback
+      * Includes loading states, success indicators, and field validation
+      */
      const contactForm = document.querySelector('.contact-form');
      const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
      const submitBtn = document.querySelector('.contact-btn');
@@ -844,32 +849,32 @@ header.classList.add('navbar-show'); // Always show navbar on page load
           });
      }
 
-/**
- * Validates individual form fields with real-time feedback
- * Provides visual indicators for field validation states
- * Supports email validation and required field checking
- * @param {HTMLElement} field - The form field element to validate
- */
-function validateField(field) {
-     const value = field.value.trim();
-     const type = field.type;
-     let isValid = true;
+     /**
+      * Validates individual form fields with real-time feedback
+      * Provides visual indicators for field validation states
+      * Supports email validation and required field checking
+      * @param {HTMLElement} field - The form field element to validate
+      */
+     function validateField(field) {
+          const value = field.value.trim();
+          const type = field.type;
+          let isValid = true;
 
-     // Remove existing error styling before validation
-     field.style.borderColor = '';
+          // Remove existing error styling before validation
+          field.style.borderColor = '';
 
-     // Check if field is empty (required validation)
-     if (value === '') {
-          isValid = false;
-     } else if (type === 'email') {
-          // Email format validation using regex pattern
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          isValid = emailRegex.test(value);
-     }
+          // Check if field is empty (required validation)
+          if (value === '') {
+               isValid = false;
+          } else if (type === 'email') {
+               // Email format validation using regex pattern
+               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+               isValid = emailRegex.test(value);
+          }
 
-     // Apply error styling for invalid fields with content
-     if (!isValid && value !== '') {
-          field.style.borderColor = '#ef4444'; // Red border for errors
+          // Apply error styling for invalid fields with content
+          if (!isValid && value !== '') {
+               field.style.borderColor = '#ef4444'; // Red border for errors
                field.style.boxShadow = '0 0 0 4px rgba(239, 68, 68, 0.1)';
           } else if (isValid && value !== '') {
                field.style.borderColor = '#10b981';
@@ -946,7 +951,7 @@ if (mobileNav) {
 if (mobileThemeToggle && themeToggle) {
      // Set initial state for mobile theme toggle
      mobileThemeToggle.checked = themeToggle.checked;
-     
+
      // Sync mobile theme toggle with main theme toggle
      mobileThemeToggle.addEventListener('change', () => {
           themeToggle.checked = mobileThemeToggle.checked;
@@ -961,9 +966,9 @@ if (mobileThemeToggle && themeToggle) {
 
 // Close mobile nav when clicking outside the overlay
 document.addEventListener('click', (e) => {
-     if (mobileNav && mobileNav.classList.contains('active') && 
-         !mobileNav.contains(e.target) && 
-         !mobileNavToggle.contains(e.target)) {
+     if (mobileNav && mobileNav.classList.contains('active') &&
+          !mobileNav.contains(e.target) &&
+          !mobileNavToggle.contains(e.target)) {
           closeMobileNav();
      }
 });
@@ -999,37 +1004,25 @@ document.addEventListener("DOMContentLoaded", function () {
  
      document.getElementById("contact-form").addEventListener("submit", function (event) {
        event.preventDefault();
-       
-       // Show loading notification
-       showNotification("📧 Sending your message...", "info");
  
        const fullname = document.getElementById("fullname").value;
        const email = document.getElementById("email").value;
        const message = document.getElementById("message").value;
  
-       emailjs.send("service_2tnsg7j", "template_fhwpxcn", {
+       emailjs.send("service_jr316ir", "template_fhwpxcn", {
          fullname: fullname,
          email: email,
          message: message
        }).then(
          function (response) {
            console.log("SUCCESS", response);
-           showNotification("🎉 Message sent successfully! I'll get back to you soon.", "success");
+           alert("Message sent successfully!");
            document.getElementById("contact-form").reset();
          },
          function (error) {
            console.error("FAILED", error);
-           showNotification("❌ Failed to send message. Please try again or contact me directly.", "error");
+           alert("Failed to send message. Please try again.");
          }
        );
-     });
-     
-     // Ensure theme toggles are properly synchronized after DOM is loaded
-     const themeToggle = document.getElementById('theme-toggle');
-     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-     
-     if (themeToggle && mobileThemeToggle) {
-          // Re-sync mobile theme toggle state
-          mobileThemeToggle.checked = themeToggle.checked;
-     }
-   });
+     });
+   });
